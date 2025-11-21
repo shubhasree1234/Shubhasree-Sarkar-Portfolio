@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
@@ -253,7 +254,7 @@ const ReachifyMeCaseStudy: React.FC<ReachifyMeCaseStudyProps> = ({ navigateTo })
                           <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800">
                             <h3 className="text-xl font-bold mb-4 text-[#88FF55]">Growth Opportunities</h3>
                             <ul className="list-disc list-inside space-y-3 text-gray-400">
-                                <li>Expand solopreneur market (22% YoY)</li>
+                                <li>Expand solopreneur market (22% YoY growth)</li>
                                 <li>Boost DAU/MAU ratio via habit loops and community challenges</li>
                                 <li>Enhance trial-to-paid conversion with tiered pricing</li>
                             </ul>
@@ -362,7 +363,7 @@ const ReachifyMeCaseStudy: React.FC<ReachifyMeCaseStudyProps> = ({ navigateTo })
                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
                         <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800"><h3 className="font-semibold text-lg text-[#88FF55]">User Acquisition</h3><p className="text-3xl font-bold mt-2">6,000+</p><p className="text-sm text-gray-500">users in 3 months (↑ 40%)</p></motion.div>
                         <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800"><h3 className="font-semibold text-lg text-[#88FF55]">Engagement</h3><p className="text-3xl font-bold mt-2">&gt; 0.30</p><p className="text-sm text-gray-500">DAU/MAU (↑ 40%)</p></motion.div>
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800"><h3 className="font-semibold text-lg text-[#88FF55]">Satisfaction</h3><p className="text-3xl font-bold mt-2">&lt; 5%</p><p className="text-sm text-gray-500">Churn, NPS > 50</p></motion.div>
+                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800"><h3 className="font-semibold text-lg text-[#88FF55]">Satisfaction</h3><p className="text-3xl font-bold mt-2">&lt; 5%</p><p className="text-sm text-gray-500">Churn, NPS &gt; 50</p></motion.div>
                         <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800"><h3 className="font-semibold text-lg text-[#88FF55]">Conversion</h3><p className="text-3xl font-bold mt-2">8%</p><p className="text-sm text-gray-500">trial-to-paid (↑ from 5%)</p></motion.div>
                         <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800"><h3 className="font-semibold text-lg text-[#88FF55]">Efficiency</h3><p className="text-3xl font-bold mt-2">&lt; 2s</p><p className="text-sm text-gray-500">generation time, 99.5% uptime</p></motion.div>
                         <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800"><h3 className="font-semibold text-lg text-[#88FF55]">Growth</h3><p className="text-3xl font-bold mt-2">&gt; 0.5</p><p className="text-sm text-gray-500">15% referral rate, viral coefficient</p></motion.div>
