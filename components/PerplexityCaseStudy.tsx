@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 // Fix: Import Variants type from framer-motion
 import { motion, AnimatePresence, Variants } from 'framer-motion';
@@ -273,7 +274,7 @@ const PerplexityCaseStudy: React.FC<PerplexityCaseStudyProps> = ({ navigateTo })
                                     <p className="text-white font-semibold">Satisfaction</p>
                                     <p className="text-xs text-gray-500 mt-1">NPS score • user feedback ratings</p>
                                   </div>
-                                  <span className="text-white font-mono text-sm px-2 py-1 bg-gray-700/50 rounded">NPS > 50</span>
+                                  <span className="text-white font-mono text-sm px-2 py-1 bg-gray-700/50 rounded">NPS &gt; 50</span>
                                 </li>
                             </ul>
                         </motion.div>
