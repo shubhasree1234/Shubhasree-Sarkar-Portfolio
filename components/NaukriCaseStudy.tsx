@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
@@ -450,7 +451,7 @@ const NaukriCaseStudy: React.FC<NaukriCaseStudyProps> = ({ navigateTo }) => {
                                 <div className="border-t border-gray-700 pt-4 mt-4">
                                     <h4 className="font-semibold text-[#88FF55]">Expected Impact</h4>
                                     <ul className="list-disc list-inside text-gray-400 space-y-1 mt-2 text-sm">
-                                        <li>20% revenue uplift through upselling and resume services</li>
+                                        <li>20% revenue uplift through upselling and cross-selling resume services</li>
                                         <li>30% of free users converting to some paid feature</li>
                                         <li>50% increase in average revenue per recruiter</li>
                                     </ul>
@@ -580,10 +581,10 @@ const NaukriCaseStudy: React.FC<NaukriCaseStudyProps> = ({ navigateTo }) => {
                         <h2 className="text-3xl font-bold">Wireframes & Prototypes</h2>
                     </div>
                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 text-center"><h3 className="font-semibold text-lg">Redesigned Recruiter Onboarding</h3></motion.div>
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 text-center"><h3 className="font-semibold text-lg">Job Seeker Profile Completion</h3></motion.div>
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 text-center"><h3 className="font-semibold text-lg">Smart Notification System</h3></motion.div>
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 text-center"><h3 className="font-semibold text-lg">Premium Feature Showcase</h3></motion.div>
+                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 text-center"><h3 className="font-semibold text-lg">Redesigned Recruiter<br />Onboarding</h3></motion.div>
+                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 text-center"><h3 className="font-semibold text-lg">Job Seeker Profile<br />Completion</h3></motion.div>
+                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 text-center"><h3 className="font-semibold text-lg">Smart Notification<br />System</h3></motion.div>
+                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 text-center"><h3 className="font-semibold text-lg">Premium Feature<br />Showcase</h3></motion.div>
                      </div>
                  </motion.section>
 

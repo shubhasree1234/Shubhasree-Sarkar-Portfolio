@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
@@ -220,45 +221,41 @@ const YouTubeCaseStudy: React.FC<YouTubeCaseStudyProps> = ({ navigateTo }) => {
                 {/* 2. Project Overview */}
                  <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
                      <h2 className="text-3xl font-bold mb-8 text-center">Project Overview</h2>
-                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-                         <motion.div variants={itemVariants} className="lg:col-span-2 bg-[#111623] p-8 rounded-xl border border-gray-800 flex flex-col">
-                            <div className="space-y-6 flex-grow">
-                                <div>
-                                    <div className="flex items-center gap-3 mb-2"><SummaryIcon/> <h3 className="font-bold text-xl text-white">Summary</h3></div>
-                                    <p className="text-gray-400 text-sm">Boost user engagement on YouTube by increasing average watch session time through a product-led strategy focused on personalization, seamless content discovery, and improved content continuity.</p>
-                                    <p className="text-gray-400 text-sm mt-2">As Product Strategist, devised a comprehensive strategy combining feature enhancements, user research insights, and competitive analysis to increase watch session duration, thereby boosting user engagement and platform retention while driving higher ad revenues.</p>
-                                </div>
-                                <div>
-                                     <div className="flex items-center gap-3 mb-2"><SkillsIcon/> <h3 className="font-bold text-xl text-white">Skills Demonstrated</h3></div>
-                                    <div className="flex flex-wrap gap-2">
-                                        {["Competitor Analysis", "Customer Journey Map", "GTM Strategies", "Jobs To Be Done", "Market Analysis", "Market Research", "Personas", "Problem Prioritisation Matrix", "Product Launch", "Product Roadmap", "Solution Matrix", "Success Metrics", "SWOT Analysis", "User Segmentation", "Wireframing"].map(s => <span key={s} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full">{s}</span>)}
-                                    </div>
+                     
+                     {/* Top Section: Summary & Skills */}
+                     <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 mb-8">
+                        <div className="space-y-8">
+                            <div>
+                                <div className="flex items-center gap-3 mb-4"><SummaryIcon/> <h3 className="font-bold text-xl text-white">Summary</h3></div>
+                                <p className="text-gray-400 text-sm leading-relaxed">Boost user engagement on YouTube by increasing average watch session time through a product-led strategy focused on personalization, seamless content discovery, and improved content continuity.</p>
+                                <p className="text-gray-400 text-sm mt-4 leading-relaxed">As Product Strategist, devised a comprehensive strategy combining feature enhancements, user research insights, and competitive analysis to increase watch session duration, thereby boosting user engagement and platform retention while driving higher ad revenues.</p>
+                            </div>
+                            <div>
+                                 <div className="flex items-center gap-3 mb-4"><SkillsIcon/> <h3 className="font-bold text-xl text-white">Skills Demonstrated</h3></div>
+                                <div className="flex flex-wrap gap-2">
+                                    {["Competitor Analysis", "Customer Journey Map", "GTM Strategies", "Jobs To Be Done", "Market Analysis", "Market Research", "Personas", "Problem Prioritisation Matrix", "Product Launch", "Product Roadmap", "Solution Matrix", "Success Metrics", "SWOT Analysis", "User Segmentation", "Wireframing"].map(s => <span key={s} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full">{s}</span>)}
                                 </div>
                             </div>
-                         </motion.div>
-                         <div className="flex flex-col gap-6">
-                            <motion.div variants={itemVariants} className="bg-[#111623] p-8 md:p-10 rounded-xl border border-gray-800 flex-grow">
-                                <div className="flex flex-col items-center justify-center text-center h-full gap-4">
-                                    <CategoryIcon />
-                                    <h4 className="text-lg md:text-xl font-semibold">Category</h4>
-                                    <p className="text-base md:text-lg font-medium text-[#E6EAF2]">Academic</p>
-                                </div>
-                            </motion.div>
-                            <motion.div variants={itemVariants} className="bg-[#111623] p-8 md:p-10 rounded-xl border border-gray-800 flex-grow">
-                                <div className="flex flex-col items-center justify-center text-center h-full gap-4">
-                                    <DurationIcon />
-                                    <h4 className="text-lg md:text-xl font-semibold">Duration</h4>
-                                    <p className="text-base md:text-lg font-medium text-[#E6EAF2]">3 Weeks</p>
-                                </div>
-                            </motion.div>
-                             <motion.div variants={itemVariants} className="bg-[#111623] p-8 md:p-10 rounded-xl border border-gray-800 flex-grow">
-                                <div className="flex flex-col items-center justify-center text-center h-full gap-4">
-                                    <ToolsIcon />
-                                    <h4 className="text-lg md:text-xl font-semibold">Tools Used</h4>
-                                    <p className="text-base md:text-lg font-medium text-[#E6EAF2]">Figma · Notion · Pitch · Google Forms</p>
-                                </div>
-                            </motion.div>
-                         </div>
+                        </div>
+                     </motion.div>
+
+                     {/* Bottom Section: Category, Duration, Tools */}
+                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 flex flex-col items-center justify-center text-center">
+                            <div className="mb-4"><CategoryIcon /></div>
+                            <h4 className="text-lg font-semibold mb-2">Category</h4>
+                            <p className="text-gray-400">Academic</p>
+                        </motion.div>
+                        <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 flex flex-col items-center justify-center text-center">
+                            <div className="mb-4"><DurationIcon /></div>
+                            <h4 className="text-lg font-semibold mb-2">Duration</h4>
+                            <p className="text-gray-400">3 Weeks</p>
+                        </motion.div>
+                         <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 flex flex-col items-center justify-center text-center">
+                            <div className="mb-4"><ToolsIcon /></div>
+                            <h4 className="text-lg font-semibold mb-2">Tools Used</h4>
+                            <p className="text-gray-400">Figma · Notion · Pitch · Google Forms</p>
+                        </motion.div>
                      </div>
                  </motion.section>
 

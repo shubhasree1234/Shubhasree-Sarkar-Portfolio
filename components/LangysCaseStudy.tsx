@@ -1,10 +1,11 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
 // Icons
 const ProjectOverviewIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>;
 const SummaryIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>;
-const SkillsIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0 3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /></svg>;
+const SkillsIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /></svg>;
 const CategoryIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>;
 const DurationIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
 const ToolsIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>;
@@ -251,29 +252,56 @@ const LangysCaseStudy: React.FC<LangysCaseStudyProps> = ({ navigateTo }) => {
                 <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
                     <h2 className="text-3xl font-bold mb-8 text-center">What I Discovered</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                         <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800">
-                            <h3 className="text-xl font-bold mb-4 text-[#88FF55]">Market Intelligence</h3>
-                            <ul className="list-disc list-inside space-y-3 text-gray-400">
-                                <li><strong>High-Potential Cities Identified</strong> — Tier 1: high volume, intense competition; Tier 2: rapid growth with lower competition (strategic sweet spot).</li>
-                                <li><strong>Order Density Patterns</strong> — Metros 3–5× order density but ~2–3× higher CAC; Tier 2 growing 40–60% YoY.</li>
-                                <li><strong>Competitive Landscape</strong> — National players strong in Tier 1; local brands strong in Tier 2; clear gaps for premium ₹300–400 and value ₹99–149 positioning.</li>
-                            </ul>
+                         <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 h-full">
+                            <h3 className="text-xl font-bold mb-6 text-[#88FF55]">Market Intelligence</h3>
+                            <div className="space-y-6">
+                                <div>
+                                    <h4 className="text-gray-200 font-semibold mb-2">High-Potential Cities Identified</h4>
+                                    <p className="text-sm text-gray-400 leading-relaxed">Tier 1: high volume, intense competition; Tier 2: rapid growth with lower competition (strategic sweet spot).</p>
+                                </div>
+                                <div>
+                                    <h4 className="text-gray-200 font-semibold mb-2">Order Density Patterns</h4>
+                                    <p className="text-sm text-gray-400 leading-relaxed">Metros 3–5× order density but ~2–3× higher CAC; Tier 2 growing 40–60% YoY.</p>
+                                </div>
+                                <div>
+                                    <h4 className="text-gray-200 font-semibold mb-2">Competitive Landscape</h4>
+                                    <p className="text-sm text-gray-400 leading-relaxed">National players strong in Tier 1; local brands strong in Tier 2; clear gaps for premium ₹300–400 and value ₹99–149 positioning.</p>
+                                </div>
+                            </div>
                          </motion.div>
-                         <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800">
-                            <h3 className="text-xl font-bold mb-4 text-[#88FF55]">Consumer Insights</h3>
-                            <ul className="list-disc list-inside space-y-3 text-gray-400">
-                                <li><strong>Target Persona Characteristics</strong> — Urban millennials (25–35) ordering 3–4×/month; families and office workers as secondary segments.</li>
-                                <li><strong>Behavioral Patterns</strong> — Lunch/dinner peaks; weekend spikes; premium pricing acceptable for convenience/quality.</li>
-                                <li><strong>Food Preferences</strong> — Chicken/veg critical; spicy variants perform well; combos increase order value.</li>
-                            </ul>
+                         <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 h-full">
+                            <h3 className="text-xl font-bold mb-6 text-[#88FF55]">Consumer Insights</h3>
+                            <div className="space-y-6">
+                                <div>
+                                    <h4 className="text-gray-200 font-semibold mb-2">Target Persona Characteristics</h4>
+                                    <p className="text-sm text-gray-400 leading-relaxed">Urban millennials (25–35) ordering 3–4×/month; families and office workers as secondary segments.</p>
+                                </div>
+                                <div>
+                                    <h4 className="text-gray-200 font-semibold mb-2">Behavioral Patterns</h4>
+                                    <p className="text-sm text-gray-400 leading-relaxed">Lunch/dinner peaks; weekend spikes; premium pricing acceptable for convenience/quality.</p>
+                                </div>
+                                <div>
+                                    <h4 className="text-gray-200 font-semibold mb-2">Food Preferences</h4>
+                                    <p className="text-sm text-gray-400 leading-relaxed">Chicken/veg critical; spicy variants perform well; combos increase order value.</p>
+                                </div>
+                            </div>
                          </motion.div>
-                          <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800">
-                            <h3 className="text-xl font-bold mb-4 text-[#88FF55]">Strategic Opportunities</h3>
-                            <ul className="list-disc list-inside space-y-3 text-gray-400">
-                                <li><strong>Menu Localization Potential</strong> — India-specific flavors, spice customization, strong vegetarian lineup.</li>
-                                <li><strong>Pricing Strategy Recommendations</strong> — Premium in Tier 1; value-focused in Tier 2.</li>
-                                <li><strong>Geographic Expansion Priority</strong> — Start with high-growth, lower-competition cities (e.g., Bangalore, Pune), then major metros (Delhi, Mumbai).</li>
-                            </ul>
+                          <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 h-full">
+                            <h3 className="text-xl font-bold mb-6 text-[#88FF55]">Strategic Opportunities</h3>
+                            <div className="space-y-6">
+                                <div>
+                                    <h4 className="text-gray-200 font-semibold mb-2">Menu Localization Potential</h4>
+                                    <p className="text-sm text-gray-400 leading-relaxed">India-specific flavors, spice customization, strong vegetarian lineup.</p>
+                                </div>
+                                <div>
+                                    <h4 className="text-gray-200 font-semibold mb-2">Pricing Strategy Recommendations</h4>
+                                    <p className="text-sm text-gray-400 leading-relaxed">Premium in Tier 1; value-focused in Tier 2.</p>
+                                </div>
+                                <div>
+                                    <h4 className="text-gray-200 font-semibold mb-2">Geographic Expansion Priority</h4>
+                                    <p className="text-sm text-gray-400 leading-relaxed">Start with high-growth, lower-competition cities (e.g., Bangalore, Pune), then major metros (Delhi, Mumbai).</p>
+                                </div>
+                            </div>
                          </motion.div>
                     </div>
                 </motion.section>

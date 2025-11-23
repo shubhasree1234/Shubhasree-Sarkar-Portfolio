@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
 
@@ -31,7 +32,7 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ from, to, text }) => 
 
 
 const METRICS_DATA = [
-  { value: 30, text: 'M+', label: 'Media Addressed' },
+  { value: 30, text: 'M+', label: 'Marketing Media Addressed' },
   { value: 6, text: '+ Yrs', label: 'Experience' },
   { value: null, text: 'GenAI', label: 'Hackathon Winner' },
   { value: null, text: 'Published', label: 'Research' },
