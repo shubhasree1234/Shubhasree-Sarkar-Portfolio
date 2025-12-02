@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo }) => {
                 <a
                   key={link.name}
                   onClick={() => handleNavClick(link.page, link.href)}
-                  className={`cursor-pointer text-sm font-medium transition-colors duration-300 relative group ${isActive ? 'neon-text' : 'text-gray-300 hover:neon-text'}`}
+                  className={`cursor-pointer text-base font-medium transition-colors duration-300 relative group ${isActive ? 'neon-text' : 'text-gray-300 hover:neon-text'}`}
                 >
                   {link.name}
                   <span className={`absolute bottom-[-4px] left-0 h-0.5 bg-[#88FF55] transition-all duration-300 group-hover:w-full ${isActive ? 'w-full' : 'w-0'}`}></span>
@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo }) => {
           <div className="hidden lg:block">
             <button
               onClick={() => navigateTo('contact')}
-              className="cursor-pointer px-5 py-2.5 text-sm font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-all duration-300 hover:bg-white hover:neon-glow"
+              className="cursor-pointer px-5 py-2.5 text-base font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-all duration-300 hover:bg-white hover:neon-glow"
             >
               Get In Touch
             </button>

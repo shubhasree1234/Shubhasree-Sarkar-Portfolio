@@ -43,7 +43,16 @@ const RadarChart: React.FC = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const chartData = {
-        labels: ['Data Science', 'Data Visualization', 'User Research', 'Strategy', 'Analytics', 'Machine Learning', 'Business Intelligence', 'Product Management'],
+        labels: [
+            ['Data', 'Science'], 
+            ['Data', 'Visualization'], 
+            ['User', 'Research'], 
+            'Strategy', 
+            'Analytics', 
+            ['Machine', 'Learning'], 
+            ['Business', 'Intelligence'], 
+            ['Product', 'Management']
+        ],
         datasets: [{
             label: 'Proficiency',
             data: [7, 8, 8, 7, 8, 7, 7, 7],
@@ -67,15 +76,18 @@ const RadarChart: React.FC = () => {
                     data: chartData,
                     options: {
                         responsive: true,
-                        maintainAspectRatio: true,
+                        maintainAspectRatio: false,
                         animation: prefersReducedMotion ? false : { duration: 900, easing: 'easeOutQuart' },
+                        layout: {
+                            padding: 20
+                        },
                         scales: {
                             r: {
                                 angleLines: { color: 'rgba(230, 234, 242, 0.1)' },
                                 grid: { color: 'rgba(230, 234, 242, 0.1)' },
                                 pointLabels: {
                                     color: '#E6EAF2',
-                                    font: { size: 14, family: 'Inter, sans-serif' }
+                                    font: { size: 12, family: 'Inter, sans-serif', weight: '500' }
                                 },
                                 ticks: {
                                     color: '#A8B0C2',
@@ -110,7 +122,7 @@ const RadarChart: React.FC = () => {
         };
     }, [isInView, prefersReducedMotion]);
 
-    return <canvas ref={canvasRef} aria-label="Radar chart showing core competencies" role="img" />;
+    return <canvas ref={canvasRef} aria-label="Radar chart showing core competencies" role="img" className="w-full h-full" />;
 };
 
 
@@ -183,8 +195,10 @@ const Skills: React.FC<SkillsProps> = ({ navigateTo }) => {
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#E6EAF2]">Core Competencies</h2>
                         <p className="mt-4 max-w-3xl mx-auto text-[#A8B0C2]">Leveraging data-driven insights and product management frameworks to drive business growth and user engagement.</p>
                     </div>
-                    <div className="max-w-3xl mx-auto p-6 md:p-8 bg-[#111623] rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-                        <RadarChart />
+                    <div className="max-w-3xl mx-auto p-6 md:p-8 bg-[#111623] rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] flex justify-center">
+                        <div className="w-full max-w-lg aspect-square">
+                            <RadarChart />
+                        </div>
                     </div>
                 </motion.div>
 

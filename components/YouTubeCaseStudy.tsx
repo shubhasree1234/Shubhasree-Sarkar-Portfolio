@@ -215,7 +215,7 @@ const YouTubeCaseStudy: React.FC<YouTubeCaseStudyProps> = ({ navigateTo }) => {
                      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#E6EAF2] text-center mt-12 mb-4">
                         Product Improvement of YouTube
                     </h1>
-                     <p className="text-center text-lg text-gray-400 mb-12">Enhancing Watch Session Duration Through Strategic Product Interventions</p>
+                     <p className="text-center text-xl md:text-2xl text-gray-400 mb-12">Enhancing Watch Session Duration Through Strategic Product Interventions</p>
                 </motion.div>
 
                 {/* 2. Project Overview */}

@@ -38,30 +38,9 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
           <h2 className="mt-4 text-xl md:text-2xl lg:text-3xl text-gray-300">
             A Decision Scientist & Product Enthusiast
           </h2>
-          <p className="mt-6 max-w-3xl mx-auto text-base md:text-lg text-gray-400">
+          <p className="mt-6 max-w-3xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed">
             I bridge the gap between data and decisions, leveraging advanced analytics and machine learning to build intelligent products that drive business growth and user engagement.
           </p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <button
-            onClick={() => navigateTo('contact')}
-            className="px-8 py-3 text-lg font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow"
-          >
-            Get In Touch
-          </button>
-          <a
-            href="https://drive.google.com/file/d/1mmVPWqlDcpKV84SFTg4xGeGkTbIJXCCU/view"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3 text-lg font-semibold text-gray-200 border-2 border-gray-600 rounded-lg transition-all duration-300 hover:scale-105 hover:border-[#88FF55] hover:neon-text"
-          >
-            Download Resume
-          </a>
         </motion.div>
       </div>
     </section>
