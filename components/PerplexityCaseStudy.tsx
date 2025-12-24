@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 // Fix: Import Variants type from framer-motion
 import { motion, AnimatePresence, Variants } from 'framer-motion';
@@ -209,7 +208,7 @@ const PerplexityCaseStudy: React.FC<PerplexityCaseStudyProps> = ({ navigateTo })
                          </motion.div>
                           <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800">
                             <h3 className="text-xl font-bold mb-4 text-[#88FF55]">Growth Opportunities</h3>
-                            <ul className="space-y-3 text-gray-400">
+                            <ul className="list-disc list-inside text-gray-400 space-y-3 text-sm">
                                 <li><strong>User Acquisition:</strong> Scaling strategies</li>
                                 <li><strong>Usage Optimization:</strong> Improving engagement</li>
                                 <li><strong>Revenue Enhancement:</strong> Monetization approaches</li>
@@ -348,7 +347,6 @@ const PerplexityCaseStudy: React.FC<PerplexityCaseStudyProps> = ({ navigateTo })
                            View My Projects
                         </button>
                     </div>
-                    <p className="mt-6 text-sm text-gray-400">shubhasree.sarkar3103@gmail.com</p>
                 </motion.section>
             </div>
          </div>

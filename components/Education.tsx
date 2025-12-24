@@ -8,7 +8,7 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const educationData = [
@@ -102,7 +102,6 @@ const certificationData = [
   }
 ];
 
-
 interface EducationProps {
     navigateTo: (page: string) => void;
 }
@@ -111,14 +110,17 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
     return (
         <div className="py-24 sm:py-32 bg-[#0C0F1D]">
             <div className="container max-w-7xl mx-auto px-6 lg:px-8">
-                {/* Page Header */}
                 <motion.div
                     className="text-center mb-16 md:mb-20"
                     initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#88FF55] text-glow relative inline-block">
+                    <motion.h1 
+                        whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
+                        className="text-4xl md:text-5xl font-bold tracking-tight text-[#88FF55] text-glow relative inline-block cursor-default"
+                    >
                         Education & Learning
                         <motion.span
                             className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
@@ -126,13 +128,15 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                             animate={{ width: '100%' }}
                             transition={{ duration: 0.8, delay: 0.5, ease: 'easeInOut' }}
                         />
-                    </h1>
-                    <p className="mt-8 max-w-3xl mx-auto text-lg text-[#A8B0C2]">
+                    </motion.h1>
+                    <motion.p 
+                        whileHover={{ color: '#E0E0E0', transition: { duration: 0.3 } }}
+                        className="mt-8 max-w-3xl mx-auto text-lg text-[#A8B0C2] cursor-default"
+                    >
                         My academic foundation and continuous pursuit of knowledge in the fields of business, data, and product.
-                    </p>
+                    </motion.p>
                 </motion.div>
 
-                {/* Formal Education */}
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                     variants={containerVariants}
@@ -144,11 +148,11 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                         <motion.div
                             key={edu.degree}
                             variants={itemVariants}
-                            className="flex flex-col bg-[#111623] p-6 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 motion-safe:hover:-translate-y-1.5 hover:border-[rgba(136,255,85,0.35)] focus-within:border-[rgba(136,255,85,0.35)]"
+                            className="flex flex-col bg-[#111623] p-6 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 motion-safe:hover:-translate-y-1.5 hover:border-[rgba(136,255,85,0.35)] group"
                         >
                             <div className="flex justify-between items-start">
                                 <div>
-                                    <h3 className="text-xl font-bold text-[#E6EAF2]">{edu.degree}</h3>
+                                    <h3 className="text-xl font-bold text-[#E6EAF2] group-hover:text-white transition-colors">{edu.degree}</h3>
                                     <p className="text-sm text-[#A8B0C2]">{edu.specialization}</p>
                                 </div>
                             </div>
@@ -166,15 +170,17 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                     ))}
                 </motion.div>
 
-                {/* Fellowships Header */}
                 <motion.div
                     className="mt-24 md:mt-32 text-center"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#E6EAF2] relative inline-block">
+                    <motion.h2 
+                        whileHover={{ x: 10, transition: { duration: 0.3 } }}
+                        className="text-3xl md:text-4xl font-bold text-[#E6EAF2] relative inline-block cursor-default"
+                    >
                         Fellowships & Specializations
                         <motion.span
                             className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
@@ -183,10 +189,9 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2, ease: 'easeInOut' }}
                         />
-                    </h2>
+                    </motion.h2>
                 </motion.div>
 
-                {/* Fellowships Content */}
                 <motion.div
                     className="mt-12 space-y-8"
                      variants={containerVariants}
@@ -195,10 +200,10 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                     viewport={{ once: true, amount: 0.2 }}
                 >
                      {fellowshipData.map(cert => (
-                        <motion.div key={cert.title} variants={itemVariants} className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-lg">
+                        <motion.div key={cert.title} variants={itemVariants} className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-lg hover:border-[#88FF55]/30 transition-colors group">
                            <div className="flex justify-between items-start flex-col sm:flex-row">
                                <div>
-                                   <h3 className="text-2xl font-bold text-[#E6EAF2]">{cert.title}</h3>
+                                   <h3 className="text-2xl font-bold text-[#E6EAF2] group-hover:text-white transition-colors">{cert.title}</h3>
                                    <p className="text-md text-[#A8B0C2] mt-1">{cert.issuer}</p>
                                </div>
                                {cert.date && <p className="text-sm text-[#A8B0C2] mt-2 sm:mt-0">{cert.date}</p>}
@@ -219,15 +224,17 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                      ))}
                 </motion.div>
 
-                {/* Certifications Header (Just above Research Publication) */}
                 <motion.div
                     className="mt-24 md:mt-32 text-center"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#E6EAF2] relative inline-block">
+                    <motion.h2 
+                        whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+                        className="text-3xl md:text-4xl font-bold text-[#E6EAF2] relative inline-block cursor-default"
+                    >
                         Certifications
                         <motion.span
                             className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
@@ -236,10 +243,9 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2, ease: 'easeInOut' }}
                         />
-                    </h2>
+                    </motion.h2>
                 </motion.div>
 
-                {/* Professional Certifications Content */}
                 <motion.div
                     className="mt-12 space-y-8"
                      variants={containerVariants}
@@ -248,10 +254,10 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                     viewport={{ once: true, amount: 0.2 }}
                 >
                      {certificationData.map(cert => (
-                        <motion.div key={cert.title} variants={itemVariants} className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-lg">
+                        <motion.div key={cert.title} variants={itemVariants} className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-lg hover:border-[#88FF55]/30 transition-colors group">
                            <div className="flex justify-between items-start flex-col sm:flex-row">
                                <div>
-                                   <h3 className="text-2xl font-bold text-[#E6EAF2]">{cert.title}</h3>
+                                   <h3 className="text-2xl font-bold text-[#E6EAF2] group-hover:text-white transition-colors">{cert.title}</h3>
                                    <p className="text-md text-[#A8B0C2] mt-1">{cert.issuer}</p>
                                </div>
                            </div>
@@ -268,15 +274,19 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                      ))}
                 </motion.div>
 
-                {/* Research Publication */}
                 <motion.div
                      className="mt-24 md:mt-32"
                      initial={{ opacity: 0, y: 50 }}
                      whileInView={{ opacity: 1, y: 0 }}
                      viewport={{ once: true, amount: 0.3 }}
-                     transition={{ duration: 0.8, ease: 'easeOut' }}
+                     transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#E6EAF2]">Research Publication</h2>
+                    <motion.h2 
+                        whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
+                        className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#E6EAF2] cursor-default"
+                    >
+                        Research Publication
+                    </motion.h2>
                     <div className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-lg motion-safe:hover:-translate-y-1.5 hover:border-[rgba(136,255,85,0.35)] transition-all duration-300">
                         <p className="text-sm font-semibold text-[#88FF55]">Advanced Machine Intelligence and Signal Processing • Springer • June 2022</p>
                         <h3 className="text-2xl font-bold text-[#E6EAF2] mt-2">Study of Machine Learning Techniques to Mitigate Fraudulent Transactions in Credit Cards</h3>
@@ -291,13 +301,12 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                     </div>
                 </motion.div>
 
-                {/* CTA */}
                  <motion.div
                     className="mt-24 md:mt-32 text-center"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
                     <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#E6EAF2]">Curious about my skills?</h2>
                     <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -309,7 +318,6 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                         </button>
                     </div>
                 </motion.div>
-
             </div>
         </div>
     );

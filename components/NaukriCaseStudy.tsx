@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
@@ -162,8 +161,7 @@ const containerVariants: Variants = {
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
-    opacity: 1,
-    y: 0,
+    opacity: 1, y: 0,
     transition: {
       duration: 0.6,
       ease: 'easeOut'
@@ -710,7 +708,6 @@ const NaukriCaseStudy: React.FC<NaukriCaseStudyProps> = ({ navigateTo }) => {
                             <span key={tag} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full">{tag}</span>
                         ))}
                     </div>
-                    <p className="mt-6 text-sm text-gray-500">For questions or feedback, contact: <a href="mailto:shubhasree.sarkar3103@gmail.com" className="hover:text-[#88FF55]">shubhasree.sarkar3103@gmail.com</a></p>
                 </motion.section>
 
                  {/* 14. Final CTA */}
@@ -731,7 +728,6 @@ const NaukriCaseStudy: React.FC<NaukriCaseStudyProps> = ({ navigateTo }) => {
                            View My Projects
                         </button>
                     </div>
-                    <p className="mt-6 text-sm text-gray-400">shubhasree.sarkar3103@gmail.com</p>
                 </motion.section>
             </div>
          </div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// Fix: Import Transition type from framer-motion
 import { motion, AnimatePresence, Transition } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -19,9 +18,9 @@ import ReachifyMeCaseStudy from './components/ReachifyMeCaseStudy';
 import NaukriCaseStudy from './components/NaukriCaseStudy';
 import LangysCaseStudy from './components/LangysCaseStudy';
 import YouTubeCaseStudy from './components/YouTubeCaseStudy';
+import ScrollToTop from './components/ScrollToTop';
 
-
-const CursorGlow: React.FC = () => {
+const CursorGlow: React.FC<{ theme: string }> = ({ theme }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -32,6 +31,8 @@ const CursorGlow: React.FC = () => {
     window.addEventListener('mousemove', updatePosition);
     return () => window.removeEventListener('mousemove', updatePosition);
   }, []);
+
+  if (theme === 'light') return null;
 
   return (
     <div 
@@ -45,6 +46,21 @@ const CursorGlow: React.FC = () => {
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('home');
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'light') {
+      root.classList.add('light');
+    } else {
+      root.classList.remove('light');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   const navigateTo = (page: string) => {
     if (page === 'resume') {
@@ -68,7 +84,6 @@ const App: React.FC = () => {
       out: { opacity: 0, filter: 'blur(4px)' }
   };
 
-  // Fix: Add explicit Transition type to the pageTransition object
   const pageTransition: Transition = {
       type: 'tween',
       ease: 'anticipate',
@@ -76,10 +91,11 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0C0F1D] text-gray-200 antialiased overflow-x-hidden">
-      <CursorGlow />
+    <div className={`bg-theme-primary text-theme-primary antialiased overflow-x-hidden transition-colors duration-500`}>
+      <div className="noise-overlay" aria-hidden="true" />
+      <CursorGlow theme={theme} />
       <div className="relative z-10">
-        <Header currentPage={currentPage} navigateTo={navigateTo} />
+        <Header currentPage={currentPage} navigateTo={navigateTo} theme={theme} toggleTheme={toggleTheme} />
         <main>
            <AnimatePresence mode="wait">
             {currentPage === 'home' && (
@@ -245,6 +261,7 @@ const App: React.FC = () => {
         </main>
         <Footer currentPage={currentPage} navigateTo={navigateTo}/>
       </div>
+      <ScrollToTop />
     </div>
   );
 };

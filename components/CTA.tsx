@@ -11,17 +11,23 @@ const CTA: React.FC<CTAProps> = ({ navigateTo }) => {
       <div className="absolute inset-0 z-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at center, #88FF55 0%, transparent 60%)' }}></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+          <motion.h2 
+            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+            className="text-3xl md:text-4xl font-extrabold tracking-tight cursor-default inline-block"
+          >
             Ready to Build Something Amazing?
-          </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-gray-400">
+          </motion.h2>
+          <motion.p 
+            whileHover={{ color: '#E0E0E0', transition: { duration: 0.3 } }}
+            className="mt-4 max-w-2xl mx-auto text-gray-400 cursor-default"
+          >
             I’m currently open to new opportunities and collaborations. Let's connect and explore how my skills in data science and product strategy can bring your next project to life.
-          </p>
+          </motion.p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => navigateTo('contact')}

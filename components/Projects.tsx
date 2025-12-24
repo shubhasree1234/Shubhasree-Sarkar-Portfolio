@@ -12,7 +12,7 @@ interface Project {
     tags: string[];
     tools: string[];
     category: Category;
-    caseStudyPage?: string; // Route for the case study page
+    caseStudyPage?: string; 
 }
 
 const projectsData: Project[] = [
@@ -74,7 +74,6 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
     );
 };
 
-
 const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     const [activeFilter, setActiveFilter] = useState<Filter>('All');
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -97,32 +96,40 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
             <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
             <div className="py-24 sm:py-32 bg-[#0C0F1D]">
                 <div className="container max-w-7xl mx-auto px-6 lg:px-8">
-                    {/* Page Header */}
+                    {/* Section Header with Scroll & Hover effects */}
                     <motion.div
                         className="text-center mb-16 md:mb-20"
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#88FF55] text-glow relative inline-block">
+                        <motion.h1 
+                            whileHover={{ scale: 1.02, x: 5 }}
+                            className="text-4xl md:text-5xl font-bold tracking-tight text-[#88FF55] text-glow relative inline-block cursor-default"
+                        >
                             My Projects
                             <motion.span
                                 className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
                                 initial={{ width: 0 }}
-                                animate={{ width: '100%' }}
+                                whileInView={{ width: '100%' }}
                                 transition={{ duration: 0.8, delay: 0.5, ease: 'easeInOut' }}
                             />
-                        </h1>
-                        <p className="mt-8 max-w-3xl mx-auto text-lg text-[#A8B0C2]">
+                        </motion.h1>
+                        <motion.p 
+                            whileHover={{ color: '#FFFFFF', scale: 1.01 }}
+                            className="mt-8 max-w-3xl mx-auto text-lg text-[#A8B0C2] cursor-default transition-all duration-300"
+                        >
                             A selection of my work, from academic deep-dives to fast-paced hackathons. Each project reflects my passion for solving complex problems with data and design.
-                        </p>
+                        </motion.p>
                     </motion.div>
 
                     {/* Filter Tabs */}
                     <motion.div 
                         className="flex justify-center gap-2 sm:gap-4 mb-12"
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         {(['All', 'Academic', 'Hackathon'] as Filter[]).map(filter => (
@@ -146,11 +153,13 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                                 <motion.div
                                     key={project.id}
                                     layout
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
+                                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                    viewport={{ once: true }}
                                     exit={{ opacity: 0, scale: 0.8 }}
+                                    whileHover={{ scale: 1.02, y: -6 }}
                                     transition={{ duration: 0.4, ease: 'easeOut' }}
-                                    className="cursor-pointer flex flex-col bg-[#111623] rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 motion-safe:hover:-translate-y-1.5 hover:border-[rgba(136,255,85,0.35)] focus-within:border-[rgba(136,255,85,0.35)] group"
+                                    className="cursor-pointer flex flex-col bg-[#111623] rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-[#88FF55]/40 hover:shadow-[0_0_20px_rgba(136,255,85,0.15),0_10px_30px_rgba(0,0,0,0.4)] group"
                                     tabIndex={0}
                                     onClick={() => handleCardClick(project)}
                                     onKeyDown={(e) => e.key === 'Enter' && handleCardClick(project)}
@@ -159,10 +168,10 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                                         <div className="flex justify-between items-start">
                                             <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${project.category === 'Academic' ? 'bg-blue-900/50 text-blue-300' : 'bg-purple-900/50 text-purple-300'}`}>{project.category}</span>
                                             <div className="text-gray-500 group-hover:text-[#88FF55] transition-colors">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                             </div>
                                         </div>
-                                        <h3 className="text-lg font-bold text-[#E6EAF2] mt-4">{project.title}</h3>
+                                        <h3 className="text-lg font-bold text-[#E6EAF2] mt-4 group-hover:text-white transition-colors">{project.title}</h3>
                                         <p className="text-sm text-[#A8B0C2] mt-1">{project.duration}</p>
                                         <p className="text-sm text-[#A8B0C2] mt-3 flex-grow">{project.description}</p>
                                         <div className="mt-4 flex flex-wrap gap-2">
@@ -183,10 +192,20 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.5 }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#E6EAF2]">Interested in My Approach?</h2>
-                        <p className="mt-4 max-w-2xl mx-auto text-[#A8B0C2]">Every project is a journey of discovery. If you’re curious about my process or want to discuss a potential collaboration, I’d love to chat.</p>
+                        <motion.h2 
+                            whileHover={{ scale: 1.02 }}
+                            className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#E6EAF2] cursor-default inline-block"
+                        >
+                            Interested in My Approach?
+                        </motion.h2>
+                        <motion.p 
+                            whileHover={{ color: '#FFFFFF' }}
+                            className="mt-4 max-w-2xl mx-auto text-[#A8B0C2] cursor-default transition-colors duration-300"
+                        >
+                            Every project is a journey of discovery. If you’re curious about my process or want to discuss a potential collaboration, I’d love to chat.
+                        </motion.p>
                         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                             <button onClick={() => navigateTo('contact')} className="w-full sm:w-auto px-8 py-3 text-lg font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
                                Let's Talk
@@ -195,7 +214,6 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                                 View My Resume
                             </button>
                         </div>
-                        <p className="mt-6 text-sm text-[#A8B0C2]">shubhasree.sarkar3103@gmail.com</p>
                     </motion.div>
                 </div>
             </div>

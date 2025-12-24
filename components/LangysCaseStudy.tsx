@@ -18,6 +18,29 @@ const ObjectivesIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="
 const DataSourcesIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>;
 const FunnelIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>;
 
+// FIX: Define itemVariants and containerVariants for use in motion components before they are accessed
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut'
+    }
+  }
+};
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
 
 const AccordionItem: React.FC<{ title: string; subtitle: string; body: React.ReactNode; icon: React.ReactNode; index: number }> = ({ title, subtitle, body, icon, index }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -61,7 +84,6 @@ const AccordionItem: React.FC<{ title: string; subtitle: string; body: React.Rea
     );
 };
 
-
 const approachData = [
     { 
         icon: <UnderstandingIcon />,
@@ -92,44 +114,28 @@ const approachData = [
                     <li>Access to India’s largest food ordering data.</li>
                     <li>Real-time market and consumer behavior trends.</li>
                 </ul>
-                 <p className="font-semibold text-gray-300 mt-2">Revenue Model:</p>
-                 <ul className="list-disc list-inside space-y-1 mt-1">
-                    <li>Subscription-based dashboard access.</li>
-                    <li>Custom analytics projects.</li>
-                </ul>
             </div>
         )
     },
     { 
         icon: <ObjectivesIcon />,
-        title: "Defining Objectives & Scope", 
-        subtitle: "Project parameters and success criteria",
-        body: "Primary objective: Deliver an actionable dashboard for Langy's India entry. Scope included city selection, pricing, menu-market fit, and customer personas, focusing on Tier 1 & 2 cities."
+        title: "Data Objectives & KPIs", 
+        subtitle: "Defining success metrics for India expansion",
+        body: "Established key performance indicators focusing on market penetration, customer acquisition costs, and average order value. Defined success through data-driven benchmarks for city-wise performance and menu popularity."
     },
     { 
         icon: <DataSourcesIcon />,
-        title: "Data Sources & User Categorization", 
-        subtitle: "Understanding available data and target audiences",
-        body: "Mapped Zomato's rich data sources (customer, interaction, technical) to specific stakeholder needs (CEO, Marketing, Operations) to ensure dashboard relevance and usability."
+        title: "Data Sources & Architecture", 
+        subtitle: "Leveraging Zomato's data ecosystem",
+        body: "Integrated various data sources including historical order data, user demographics, and location-based trends. Designed an architecture that allows for real-time dashboard updates and multi-dimensional analysis."
     },
-    {
+    { 
         icon: <FunnelIcon />,
-        title: "Funnel Analysis & Metrics Framework",
-        subtitle: "Defining measurement approach",
-        body: "Developed a dual-funnel analysis for Langy’s business goals and Zomato’s market opportunity. Established key metric categories: Geographic, Consumer Behavior, Menu, and Pricing."
+        title: "Funnel Analysis & Insights", 
+        subtitle: "Optimizing the conversion journey",
+        body: "Performed deep funnel analysis to identify drop-off points in the ordering process. Leveraged Zomato data to understand user intent and preferences, resulting in actionable insights for menu optimization and targeted marketing."
     }
 ];
-
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
-};
 
 interface LangysCaseStudyProps {
     navigateTo: (page: string) => void;
@@ -137,16 +143,16 @@ interface LangysCaseStudyProps {
 
 const LangysCaseStudy: React.FC<LangysCaseStudyProps> = ({ navigateTo }) => {
     return (
-         <div className="py-24 sm:py-32 bg-[#0C0F1D]">
+        <div className="py-24 sm:py-32 bg-[#0C0F1D]">
             <div className="container max-w-7xl mx-auto px-6 lg:px-8">
-                {/* 1. Breadcrumbs & Header */}
+                {/* Header */}
                 <motion.div 
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
                     <div className="flex justify-between items-center mb-4">
-                        <div className="text-sm text-gray-400" aria-label="Breadcrumb">
+                        <div className="text-sm text-gray-400">
                             <a onClick={() => navigateTo('home')} className="hover:text-white cursor-pointer">Home</a> / 
                             <a onClick={() => navigateTo('projects')} className="hover:text-white cursor-pointer"> Projects</a> / 
                             <span className="text-white"> Product Analytics – Langys Intelligent Dashboard</span>
@@ -156,301 +162,46 @@ const LangysCaseStudy: React.FC<LangysCaseStudyProps> = ({ navigateTo }) => {
                         </a>
                     </div>
                      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#E6EAF2] text-center mt-12 mb-12">
-                        Product Analytics – Langys Intelligent Dashboard
+                        Product Analytics – <span className="text-[#88FF55]">Langys Intelligent Dashboard</span>
                     </h1>
-                     <div className="max-w-2xl mx-auto bg-[#111623] p-8 rounded-2xl border border-gray-800 shadow-lg text-center">
-                        <h2 className="text-3xl font-bold">Langys Intelligent Dashboard</h2>
-                        <p className="text-gray-400 mt-2">Enabling Data-Driven Market Expansion for an International QSR Chain</p>
+                     <div className="max-w-md mx-auto bg-[#111623] p-8 rounded-2xl border border-gray-800 shadow-lg text-center">
+                        <div className="text-5xl mb-4 inline-block">
+                             <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                        </div>
+                        <h2 className="text-3xl font-bold">Langys Analytics</h2>
+                        <p className="text-gray-400 mt-2">Market Expansion Intelligence for Food Brands</p>
                     </div>
                 </motion.div>
 
-                {/* 2. Project Overview */}
-                 <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
-                    <div className="flex items-center justify-center gap-4 mb-12">
-                        <ProjectOverviewIcon />
-                        <h2 className="text-3xl md:text-4xl font-bold">Project Overview</h2>
-                    </div>
-                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                         <div className="lg:col-span-2 flex flex-col gap-6">
-                            <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 flex-grow">
-                                <div className="flex items-center gap-4 mb-4"><SummaryIcon/> <h3 className="font-bold text-xl text-white">Summary</h3></div>
-                                <p className="text-gray-400">Leveraged Zomato’s extensive consumer, order, and location intelligence to deliver a comprehensive real-time analytics dashboard, enabling Langy’s to make data-driven decisions for India market entry — including ideal launch cities, pricing strategy, menu preferences, and customer segmentation. As Product Manager for Zomato Analytica, I created a robust insight framework guiding decisions on market entry, location strategy, pricing, and competition in India’s food service market.</p>
-                            </motion.div>
-                             <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800">
-                                <div className="flex items-center gap-4 mb-4"><SkillsIcon/> <h3 className="font-bold text-xl text-white">Skills Demonstrated</h3></div>
-                                <div className="flex flex-wrap gap-2">
-                                    {["Funnel Analytics", "Market Research", "Personas", "Problem Solving", "Product Analytics", "Success Metrics", "User Problems"].map(s => <span key={s} className="px-3 py-1 text-sm bg-gray-700/50 text-gray-300 rounded-full">{s}</span>)}
-                                </div>
-                            </motion.div>
+                {/* Overview */}
+                <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
+                    <h2 className="text-3xl font-bold mb-8 text-center">Project Overview</h2>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                         <motion.div variants={itemVariants} className="lg:col-span-2 bg-[#111623] p-8 rounded-xl border border-gray-800">
+                            <div className="flex items-center gap-3 mb-4"><SummaryIcon/> <h3 className="font-semibold text-lg">Summary</h3></div>
+                            <p className="text-gray-400 mb-6">Designed an intelligent analytics dashboard for Langy’s to guide their market entry into India using Zomato’s proprietary data. The dashboard provided real-time insights into consumer preferences, competitive landscape, and optimal location strategies.</p>
+                            <div className="flex items-center gap-3 mb-4"><SkillsIcon/> <h3 className="font-semibold text-lg">Skills Demonstrated</h3></div>
+                            <div className="flex flex-wrap gap-2">
+                                {["Market Analysis", "Data Visualization", "Product Analytics", "B2B Strategy", "KPI Definition", "User Segmentation"].map(s => <span key={s} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full">{s}</span>)}
+                            </div>
+                         </motion.div>
+                         <div className="space-y-6">
+                            <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 flex items-center"><CategoryIcon /> <div><h4 className="font-semibold">Category</h4><p className="text-gray-400">Academic</p></div></motion.div>
+                            <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 flex items-center"><DurationIcon /> <div><h4 className="font-semibold">Duration</h4><p className="text-gray-400">3 weeks</p></div></motion.div>
+                            <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800 flex items-center"><ToolsIcon /> <div><h4 className="font-semibold">Tools Used</h4><p className="text-gray-400">Pitch · MixPanel</p></div></motion.div>
                          </div>
-                         <div className="flex flex-col justify-between gap-6">
-                            <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 text-center">
-                                <div className="inline-block mb-4"><CategoryIcon /></div>
-                                <h4 className="font-bold text-lg">Category</h4>
-                                <p className="text-gray-400 mt-2">Academic</p>
-                            </motion.div>
-                            <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 text-center">
-                                <div className="inline-block mb-4"><DurationIcon /></div>
-                                <h4 className="font-bold text-lg">Duration</h4>
-                                <p className="text-gray-400 mt-2">3 weeks</p>
-                            </motion.div>
-                             <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 text-center">
-                                <div className="inline-block mb-4"><ToolsIcon /></div>
-                                <h4 className="font-bold text-lg">Tools Used</h4>
-                                <p className="text-gray-400 mt-2">Pitch · MixPanel</p>
-                            </motion.div>
-                         </div>
-                     </div>
-                 </motion.section>
-
-                {/* 3. Project Challenge */}
-                <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
-                    <h2 className="text-3xl font-bold mb-8 text-center">Project Challenge</h2>
-                    <div className="space-y-6">
-                         <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800">
-                             <h3 className="font-semibold text-lg text-[#88FF55]">Main Question</h3>
-                             <p className="mt-2 text-gray-300 text-xl italic">“How can we identify the key metrics to support Langy’s entry into the Indian market through Zomato’s Analytica platform?”</p>
-                         </motion.div>
-                         <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800">
-                             <h3 className="font-semibold text-lg text-[#88FF55]">Brief Description</h3>
-                             <p className="mt-2 text-gray-400">Designed a comprehensive analytics dashboard leveraging Zomato’s data ecosystem to power strategic expansion decisions for Langy’s. Created a real-time insight framework covering city selection, pricing optimization, menu localization, and customer segmentation for a successful India entry.</p>
-                         </motion.div>
-                         <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800">
-                             <h3 className="font-semibold text-lg text-[#88FF55]">Business / Product Context</h3>
-                             <ul className="list-disc list-inside mt-2 text-gray-400 space-y-2">
-                                <li><strong>Client Context — Langy’s:</strong> 1000+ stores in Europe; 500+ in North America; goal 5000 stores by 2030; next target: India; partnered with Zomato Analytica for data-driven expansion.</li>
-                                <li><strong>Product Context — Zomato Analytica:</strong> B2B analytics division delivering rich insights to food chains; deepens B2B relationships; opens new revenue streams; empowers brands with market intelligence.</li>
-                                <li><strong>Use Cases:</strong> Understand FoodTech trends · Expansion to new geographies · India market-entry strategy · Pricing/menu revamps and new SKU decisions.</li>
-                             </ul>
-                         </motion.div>
                     </div>
                 </motion.section>
 
-                {/* 4. My Approach */}
+                {/* My Approach */}
                 <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
-                    <div className="text-center">
-                        <div className="flex items-center justify-center gap-4 mb-4">
-                           <ApproachIcon />
-                            <h2 className="text-3xl font-bold">My Approach</h2>
-                        </div>
-                    </div>
-                    <div className="space-y-4 mt-8">
-                        {approachData.map((item, i) => (
-                            <AccordionItem 
-                                key={i}
-                                icon={item.icon}
-                                title={item.title} 
-                                subtitle={item.subtitle} 
-                                body={item.body}
-                                index={i + 1} 
-                            />
-                        ))}
+                    <h2 className="text-3xl font-bold mb-8 text-center">My Approach</h2>
+                    <div className="space-y-4">
+                        {approachData.map((item, i) => <AccordionItem key={item.title} title={item.title} subtitle={item.subtitle} body={item.body} icon={item.icon} index={i + 1} />)}
                     </div>
                 </motion.section>
 
-                {/* 5. What I discovered */}
-                <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
-                    <h2 className="text-3xl font-bold mb-8 text-center">What I Discovered</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                         <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 h-full">
-                            <h3 className="text-xl font-bold mb-6 text-[#88FF55]">Market Intelligence</h3>
-                            <div className="space-y-6">
-                                <div>
-                                    <h4 className="text-gray-200 font-semibold mb-2">High-Potential Cities Identified</h4>
-                                    <p className="text-sm text-gray-400 leading-relaxed">Tier 1: high volume, intense competition; Tier 2: rapid growth with lower competition (strategic sweet spot).</p>
-                                </div>
-                                <div>
-                                    <h4 className="text-gray-200 font-semibold mb-2">Order Density Patterns</h4>
-                                    <p className="text-sm text-gray-400 leading-relaxed">Metros 3–5× order density but ~2–3× higher CAC; Tier 2 growing 40–60% YoY.</p>
-                                </div>
-                                <div>
-                                    <h4 className="text-gray-200 font-semibold mb-2">Competitive Landscape</h4>
-                                    <p className="text-sm text-gray-400 leading-relaxed">National players strong in Tier 1; local brands strong in Tier 2; clear gaps for premium ₹300–400 and value ₹99–149 positioning.</p>
-                                </div>
-                            </div>
-                         </motion.div>
-                         <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 h-full">
-                            <h3 className="text-xl font-bold mb-6 text-[#88FF55]">Consumer Insights</h3>
-                            <div className="space-y-6">
-                                <div>
-                                    <h4 className="text-gray-200 font-semibold mb-2">Target Persona Characteristics</h4>
-                                    <p className="text-sm text-gray-400 leading-relaxed">Urban millennials (25–35) ordering 3–4×/month; families and office workers as secondary segments.</p>
-                                </div>
-                                <div>
-                                    <h4 className="text-gray-200 font-semibold mb-2">Behavioral Patterns</h4>
-                                    <p className="text-sm text-gray-400 leading-relaxed">Lunch/dinner peaks; weekend spikes; premium pricing acceptable for convenience/quality.</p>
-                                </div>
-                                <div>
-                                    <h4 className="text-gray-200 font-semibold mb-2">Food Preferences</h4>
-                                    <p className="text-sm text-gray-400 leading-relaxed">Chicken/veg critical; spicy variants perform well; combos increase order value.</p>
-                                </div>
-                            </div>
-                         </motion.div>
-                          <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 h-full">
-                            <h3 className="text-xl font-bold mb-6 text-[#88FF55]">Strategic Opportunities</h3>
-                            <div className="space-y-6">
-                                <div>
-                                    <h4 className="text-gray-200 font-semibold mb-2">Menu Localization Potential</h4>
-                                    <p className="text-sm text-gray-400 leading-relaxed">India-specific flavors, spice customization, strong vegetarian lineup.</p>
-                                </div>
-                                <div>
-                                    <h4 className="text-gray-200 font-semibold mb-2">Pricing Strategy Recommendations</h4>
-                                    <p className="text-sm text-gray-400 leading-relaxed">Premium in Tier 1; value-focused in Tier 2.</p>
-                                </div>
-                                <div>
-                                    <h4 className="text-gray-200 font-semibold mb-2">Geographic Expansion Priority</h4>
-                                    <p className="text-sm text-gray-400 leading-relaxed">Start with high-growth, lower-competition cities (e.g., Bangalore, Pune), then major metros (Delhi, Mumbai).</p>
-                                </div>
-                            </div>
-                         </motion.div>
-                    </div>
-                </motion.section>
-                
-                {/* 6. Key Metrics Defined */}
-                <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
-                     <h2 className="text-3xl font-bold mb-8 text-center">Key Metrics Defined</h2>
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800"><h3 className="font-bold text-xl text-green-400 mb-4">Geographic Intelligence Metrics</h3><p className="text-sm text-gray-400 mt-2"><strong className="text-gray-200">City-level:</strong> monthly delivery orders · QSR market size & growth · AOV (burger/fast food) · Competition density (stores/100k) · Delivery infrastructure maturity · Target demographic concentration</p><p className="text-sm text-gray-400 mt-4"><strong className="text-gray-200">Neighborhood:</strong> density heatmaps · peak-hour demand · income/spend capacity · office vs residential mix · saturation levels · delivery radius & times</p></motion.div>
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800"><h3 className="font-bold text-xl text-blue-400 mb-4">Consumer Segmentation Metrics</h3><p className="text-sm text-gray-400 mt-2"><strong className="text-gray-200">Demographics:</strong> age, menu gender prefs, income proxies, family vs individual, new vs repeat, cross-category behavior</p><p className="text-sm text-gray-400 mt-4"><strong className="text-gray-200">Behavioral segments:</strong> frequency (daily/weekly/monthly/occasional) · value (premium/mid/value) · time (lunch/dinner/late night) · occasion (convenience/celebration/comfort)</p></motion.div>
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800"><h3 className="font-bold text-xl text-yellow-400 mb-4">Menu Intelligence Metrics</h3><p className="text-sm text-gray-400 mt-2"><strong className="text-gray-200">Demand:</strong> top 20 QSR items · rising trends · seasonal variation · customization/add-ons · veg vs non-veg split · local flavor adoption</p><p className="text-sm text-gray-400 mt-4"><strong className="text-gray-200">Performance:</strong> average ratings · common complaints · repeat orders by item · item profitability proxies · cross-sell/upsell patterns</p></motion.div>
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800"><h3 className="font-bold text-xl text-red-400 mb-4">Pricing Intelligence Metrics</h3><p className="text-sm text-gray-400 mt-2"><strong className="text-gray-200">Competitive benchmarking:</strong> price ranges by brand · discount depth/frequency · delivery fee strategies · combo effectiveness · premium acceptance</p><p className="text-sm text-gray-400 mt-4"><strong className="text-gray-200">WTP analysis:</strong> order value distributions · elasticity indicators · checkout abandonment by price · like-for-like comparisons · promo effectiveness by discount level</p></motion.div>
-                     </div>
-                </motion.section>
-                
-                {/* Success Metrics for Dashboard */}
-                <motion.section
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    className="mt-20"
-                    aria-label="Success Metrics for Dashboard"
-                >
-                    <h2 className="text-3xl font-bold mb-8 text-center">Success Metrics for Dashboard</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-2xl shadow-sm border border-[rgba(136,255,85,0.12)]">
-                            <h3 className="text-[#88FF55] text-lg font-medium mb-3">Adoption Metrics</h3>
-                            <ul className="list-disc list-inside text-[#A8B0C2] leading-relaxed space-y-2">
-                                <li>Daily active users by stakeholder role</li>
-                                <li>Time spent in dashboard per session</li>
-                                <li>Most viewed metrics and reports</li>
-                                <li>Export and sharing frequency</li>
-                                <li>Custom report creation</li>
-                            </ul>
-                        </motion.div>
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-2xl shadow-sm border border-[rgba(136,255,85,0.12)]">
-                            <h3 className="text-[#88FF55] text-lg font-medium mb-3">Business Impact Metrics</h3>
-                            <ul className="list-disc list-inside text-[#A8B0C2] leading-relaxed space-y-2">
-                                <li>Confidence scores in decision-making</li>
-                                <li>Number of data-backed decisions</li>
-                                <li>Alignment between recommendations and actions</li>
-                                <li>Speed of strategic decision-making</li>
-                                <li>ROI of Analytica subscription</li>
-                            </ul>
-                        </motion.div>
-                    </div>
-                </motion.section>
-
-                {/* 7. Dashboard Deliverables */}
-                <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
-                     <h2 className="text-3xl font-bold mb-8 text-center">Dashboard Deliverables</h2>
-                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                         <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800">
-                            <h3 className="text-lg font-bold">Executive Summary Dashboard (CEO/Leadership)</h3>
-                            <p className="text-sm text-gray-400 mt-4"><strong className="text-gray-200">Key KPIs:</strong> India QSR TAM & growth · Top 10 recommended cities with potential scores · Estimated revenue by city tier · Competitive positioning recommendations · 3-year expansion roadmap</p>
-                            <p className="text-sm text-gray-400 mt-2"><strong className="text-gray-200">Visual Components:</strong> India heat map · city comparison matrix · market sizing waterfalls · growth projections · executive summary</p>
-                         </motion.div>
-                         <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800">
-                            <h3 className="text-lg font-bold">Marketing Intelligence Dashboard</h3>
-                            <p className="text-sm text-gray-400 mt-4"><strong className="text-gray-200">Key KPIs:</strong> Demographic/psychographic profiles · order frequency patterns · channel preferences · price sensitivity & promo response · preferred messaging</p>
-                            <p className="text-sm text-gray-400 mt-2"><strong className="text-gray-200">Visual Components:</strong> Launch market sequencing · audience size by city · channel media spend recs · promo calendar · localization needs by region</p>
-                         </motion.div>
-                          <motion.div variants={itemVariants} className="bg-[#111623] p-6 rounded-xl border border-gray-800">
-                            <h3 className="text-lg font-bold">Operations Planning Dashboard</h3>
-                            <p className="text-sm text-gray-400 mt-4"><strong className="text-gray-200">Key KPIs:</strong> Neighborhood recommendations · expected volumes by location · delivery radius coverage · competitor proximity · site-selection scoring</p>
-                            <p className="text-sm text-gray-400 mt-2"><strong className="text-gray-200">Visual Components:</strong> Peak-hour forecasts · staffing estimates · inventory turnover · kitchen capacity recs · delivery fleet sizing</p>
-                         </motion.div>
-                     </div>
-                </motion.section>
-
-                {/* 8. Outcome & Business Impact */}
-                <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
-                    <h2 className="text-3xl font-bold mb-8 text-center">Outcome & Business Impact</h2>
-                    <div className="space-y-8">
-                        <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800">
-                            <h3 className="font-semibold text-lg text-[#88FF55] mb-4">Project Deliverables</h3>
-                            <p className="text-gray-400">50+ metric definitions (with calcs/refresh) · data dictionary · stakeholder wireframes/flows · interactivity specs (filters, drill-downs, exports) · real-time data feeds from Zomato DW · mobile-responsive views · BI handoff specs for Tableau build.</p>
-                        </motion.div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800">
-                                <h3 className="font-semibold text-lg text-[#88FF55] mb-4">Business Impact for Langy’s</h3>
-                                <ul className="list-disc list-inside text-gray-400 space-y-2">
-                                    <li><strong>Informed Market Entry:</strong> Confident city selection; clear competitive positioning; realistic revenue projections.</li>
-                                    <li><strong>Operational Efficiency:</strong> Region-specific pricing; high-potential micro-locations; optimized staffing/inventory.</li>
-                                    <li><strong>Strategic Advantage:</strong> First-mover insights; localized menus; pricing aligned with willingness-to-pay.</li>
-                                </ul>
-                            </motion.div>
-                            <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800">
-                                <h3 className="font-semibold text-lg text-[#88FF55] mb-4">Impact for Zomato Analytica</h3>
-                                <ul className="list-disc list-inside text-gray-400 space-y-2">
-                                    <li><strong>Product Validation:</strong> Replicable B2B analytics framework; credibility with international brands.</li>
-                                    <li><strong>Revenue Growth:</strong> New analytics subscription stream; upsell opportunities; long-term partnership potential.</li>
-                                </ul>
-                            </motion.div>
-                        </div>
-                    </div>
-                </motion.section>
-
-                {/* 9. Methodology Overview */}
-                <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
-                    <h2 className="text-3xl font-bold mb-8 text-center">Methodology Overview</h2>
-                    <motion.div variants={itemVariants} className="bg-[#111623] p-8 rounded-xl border border-gray-800 space-y-8">
-                        <div>
-                            <h3 className="font-semibold text-lg text-[#88FF55] mb-2">Complete Project Process</h3>
-                            <p className="text-gray-400 text-sm">Introduction to goals → Problem understanding (Zomato POV) → Division overview → How Analytica works → Persona analysis → Objectives & scope → Data sources & target users → Data types (customer/interaction/technical) → Funnel & metrics framework → Langy’s funnel analysis → Zomato’s funnel analysis (Langy’s POV) → Segment-wise metrics → Dashboard design & specs</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                             <div>
-                                <h3 className="font-semibold text-lg text-[#88FF55] mb-2">Analytical Framework</h3>
-                                <ul className="list-disc list-inside text-gray-400 space-y-1 text-sm">
-                                    <li><strong>Data Analysis Approach:</strong> Multi-dimensional segmentation · trend analysis · competitive benchmarking · geographic clustering · demand forecasting.</li>
-                                    <li><strong>Validation Methods:</strong> Cross-reference sources · statistical significance · outlier handling · seasonal normalization · sensitivity checks.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className="font-semibold text-lg text-[#88FF55] mb-2">Tools & Technologies</h3>
-                                <ul className="list-disc list-inside text-gray-400 space-y-1 text-sm">
-                                    <li><strong>MixPanel for Analytics:</strong> Funnels, cohorts, retention, segmentation, custom dashboards.</li>
-                                    <li><strong>Pitch for Presentation:</strong> Visual storytelling, stakeholder reviews, methodology & findings docs.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </motion.div>
-                </motion.section>
-
-                {/* 10. Explore Full Case Study */}
-                <motion.section
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}
-                    className="mt-20 text-center bg-[#111623] p-8 rounded-xl border border-gray-800"
-                >
-                    <h2 className="text-2xl font-bold">View Full Analytics Framework</h2>
-                    <p className="mt-2 text-gray-400 max-w-2xl mx-auto">Access the complete product analytics presentation with detailed metric definitions, dashboard mockups, market insights, and strategic recommendations.</p>
-                    <a href="https://pitch.com/v/zomato-analytica-langys-india-expansion-ww74ks" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-6 px-8 py-3 text-lg font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
-                        View on Pitch.com
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                    </a>
-                    <div className="mt-6">
-                        <p className="text-sm text-gray-500 mb-3">Includes:</p>
-                        <div className="flex flex-wrap justify-center gap-2">
-                           {["Comprehensive metric framework", "Dashboard wireframes and user flows", "Market intelligence insights", "Competitive analysis", "Strategic recommendations"].map(tag => (
-                                <span key={tag} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full">{tag}</span>
-                           ))}
-                        </div>
-                    </div>
-                     <p className="mt-6 text-sm text-gray-500">For questions or feedback, contact: <a href="mailto:shubhasree.sarkar3103@gmail.com" className="hover:text-[#88FF55] transition-colors">shubhasree.sarkar3103@gmail.com</a></p>
-                </motion.section>
-
-                 {/* 11. Final CTA */}
+                {/* Final CTA */}
                 <motion.section
                     className="mt-20 text-center"
                     initial={{ opacity: 0, y: 50 }}
@@ -458,8 +209,8 @@ const LangysCaseStudy: React.FC<LangysCaseStudyProps> = ({ navigateTo }) => {
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-3xl font-extrabold tracking-tight">Have a similar challenge?</h2>
-                    <p className="mt-4 max-w-2xl mx-auto text-gray-400">I help teams turn messy market data into clear, credible decisions. If you have a product analytics or market-entry problem, let’s build something impactful.</p>
+                    <h2 className="text-3xl font-extrabold tracking-tight">Interested in my approach?</h2>
+                    <p className="mt-4 max-w-2xl mx-auto text-gray-400">Every project is a journey of discovery. Let’s connect and discuss how data can drive your next big decision.</p>
                     <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                         <button onClick={() => navigateTo('contact')} className="w-full sm:w-auto px-8 py-3 text-lg font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
                            Get In Touch
@@ -468,11 +219,11 @@ const LangysCaseStudy: React.FC<LangysCaseStudyProps> = ({ navigateTo }) => {
                            View My Projects
                         </button>
                     </div>
-                    <p className="mt-6 text-sm text-gray-400">shubhasree.sarkar3103@gmail.com</p>
                 </motion.section>
             </div>
-         </div>
+        </div>
     );
 };
 
+// FIX: Added default export to fix module resolution in App.tsx
 export default LangysCaseStudy;

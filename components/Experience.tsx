@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 
-// Icons
 const TrophyIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>;
 const DocumentIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>;
 const ChartIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#88FF55]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" /><path strokeLinecap="round" strokeLinejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" /></svg>;
@@ -13,7 +12,7 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const timelineData = [
@@ -94,14 +93,17 @@ const Experience: React.FC<ExperienceProps> = ({ navigateTo }) => {
     return (
         <div className="py-24 sm:py-32 bg-[#0C0F1D]">
             <div className="container max-w-7xl mx-auto px-6 lg:px-8">
-                {/* Page Header */}
                 <motion.div
                     className="text-center mb-16 md:mb-24"
                     initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#E6EAF2] relative inline-block">
+                    <motion.h1 
+                        whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
+                        className="text-4xl md:text-5xl font-bold tracking-tight text-[#E6EAF2] relative inline-block cursor-default"
+                    >
                         My Professional Journey
                         <motion.span
                             className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
@@ -109,21 +111,21 @@ const Experience: React.FC<ExperienceProps> = ({ navigateTo }) => {
                             animate={{ width: '100%' }}
                             transition={{ duration: 0.8, delay: 0.5, ease: 'easeInOut' }}
                         />
-                    </h1>
-                    <p className="mt-8 max-w-3xl mx-auto text-lg text-[#A8B0C2]">
+                    </motion.h1>
+                    <motion.p 
+                        whileHover={{ color: '#E6EAF2', transition: { duration: 0.3 } }}
+                        className="mt-8 max-w-3xl mx-auto text-lg text-[#A8B0C2] cursor-default"
+                    >
                         From sales to analytics to decision science, my career has been a continuous path of growth and learning.
-                    </p>
+                    </motion.p>
                 </motion.div>
 
-                {/* Experience Timeline */}
                 <div className="relative max-w-5xl mx-auto">
-                    {/* Vertical Line */}
                     <div className="absolute left-4 top-2 h-full w-0.5 bg-[#88FF55]/20 lg:left-1/2 lg:-translate-x-1/2" aria-hidden="true" />
 
                     <div className="space-y-16">
                         {timelineData.map((item, index) => (
                             <div key={index} className="relative">
-                                {/* Dot */}
                                 <motion.div 
                                     className="absolute left-4 top-2 h-5 w-5 -translate-x-1/2 rounded-full bg-[#111623] border-2 border-[#88FF55] lg:left-1/2"
                                     whileInView={{ scale: [1, 1.3, 1] }}
@@ -136,11 +138,11 @@ const Experience: React.FC<ExperienceProps> = ({ navigateTo }) => {
                                     initial={{ opacity: 0, x: index % 2 !== 0 ? -50 : 50 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, amount: 0.5 }}
-                                    transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+                                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                                 >
-                                    <div className="p-6 bg-[#111623] rounded-xl border border-[#88FF55]/[0.16] shadow-2xl shadow-black/20 hover:border-[#88FF55]/40 hover:-translate-y-1.5 transition-all duration-300">
+                                    <div className="p-6 bg-[#111623] rounded-xl border border-[#88FF55]/[0.16] shadow-2xl shadow-black/20 hover:border-[#88FF55]/40 hover:-translate-y-1.5 transition-all duration-300 group">
                                         <div className="flex justify-between items-start mb-2 flex-col sm:flex-row">
-                                            <h3 className="text-xl font-bold text-[#E6EAF2]">{item.role}</h3>
+                                            <h3 className="text-xl font-bold text-[#E6EAF2] group-hover:text-white transition-colors">{item.role}</h3>
                                             <p className="text-sm text-[#A8B0C2] whitespace-nowrap mt-1 sm:mt-0">{item.duration}</p>
                                         </div>
                                         <p className="text-md text-[#A8B0C2] mb-4">{item.org}</p>
@@ -157,7 +159,6 @@ const Experience: React.FC<ExperienceProps> = ({ navigateTo }) => {
                     </div>
                 </div>
 
-                {/* Key Achievements */}
                 <motion.div
                     className="mt-24 md:mt-32"
                     variants={containerVariants}
@@ -183,7 +184,6 @@ const Experience: React.FC<ExperienceProps> = ({ navigateTo }) => {
                     </div>
                 </motion.div>
 
-                {/* Current Focus & Interests */}
                  <motion.div
                     className="mt-24 md:mt-32"
                     variants={containerVariants}
@@ -215,13 +215,12 @@ const Experience: React.FC<ExperienceProps> = ({ navigateTo }) => {
                     </div>
                  </motion.div>
 
-                {/* CTA Section */}
                 <motion.div
                     className="mt-24 md:mt-32 text-center"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
                     <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#E6EAF2]">Ready to Build Something Amazing?</h2>
                     <p className="mt-4 max-w-2xl mx-auto text-[#A8B0C2]">I’m open to collaborations and new opportunities. Let’s connect and explore how my skills can bring value to your team.</p>
