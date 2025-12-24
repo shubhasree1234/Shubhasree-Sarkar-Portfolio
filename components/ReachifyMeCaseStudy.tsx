@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
@@ -207,7 +208,7 @@ const ReachifyMeCaseStudy: React.FC<ReachifyMeCaseStudyProps> = ({ navigateTo })
                     </div>
                 </motion.section>
 
-                {/* 4. My strategic GTM framework */}
+                {/* 4. My Strategic GTM Framework */}
                 <motion.section variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-20">
                     <div className="text-center">
                         <div className="flex items-center justify-center gap-4 mb-4">
@@ -494,6 +495,7 @@ const ReachifyMeCaseStudy: React.FC<ReachifyMeCaseStudyProps> = ({ navigateTo })
                            View My Projects
                         </button>
                     </div>
+                    <p className="mt-6 text-sm text-gray-400">shubhasree.sarkar3103@gmail.com</p>
                 </motion.section>
             </div>
          </div>

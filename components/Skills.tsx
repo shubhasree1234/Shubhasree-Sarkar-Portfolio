@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion, Variants, useInView } from 'framer-motion';
 
@@ -196,15 +195,44 @@ const Skills: React.FC<SkillsProps> = ({ navigateTo }) => {
                         </motion.h2>
                         <p className="mt-4 max-w-3xl mx-auto text-[#A8B0C2] transition-colors duration-300 hover:text-white cursor-default">Leveraging data-driven insights and product management frameworks to drive business growth and user engagement.</p>
                     </div>
-                    {/* FIX: Completed the truncated div and finished the component */}
-                    <div className="max-w-3xl mx-auto p-6 md:p-8 bg-[#111623] rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-lg aspect-square md:aspect-video flex items-center justify-center">
-                        <RadarChart />
+                    <div className="max-w-3xl mx-auto p-6 md:p-8 bg-[#111623] rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] flex justify-center transition-all duration-300 hover:border-[#88FF55]/30">
+                        <div className="w-full max-w-lg aspect-square">
+                            <RadarChart />
+                        </div>
                     </div>
+                </motion.div>
+
+                <motion.div
+                    className="mt-24 md:mt-32 text-center"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                >
+                    <motion.h2 
+                        whileHover={{ scale: 1.02 }}
+                        className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#E6EAF2] cursor-default inline-block"
+                    >
+                        Let’s Build Together
+                    </motion.h2>
+                    <p className="mt-4 max-w-2xl mx-auto text-[#A8B0C2] hover:text-white transition-colors cursor-default">
+                        If my skills align with what you’re looking for, I’d be excited to learn more about your project and how I can contribute.
+                    </p>
+                    <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button onClick={() => navigateTo('contact')} className="w-full sm:w-auto px-8 py-3 text-lg font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
+                            Contact Me &rarr;
+                        </button>
+                        <button onClick={() => navigateTo('experience')} className="w-full sm:w-auto px-8 py-3 text-lg font-semibold text-gray-200 border-2 border-gray-600 rounded-lg transition-all duration-300 hover:scale-105 hover:border-[#88FF55] hover:neon-text">
+                            View My Experience
+                        </button>
+                    </div>
+                     <p className="mt-6 text-sm text-[#A8B0C2]">
+                        shubhasree.sarkar3103@gmail.com
+                    </p>
                 </motion.div>
             </div>
         </div>
     );
 };
 
-// FIX: Added default export
 export default Skills;

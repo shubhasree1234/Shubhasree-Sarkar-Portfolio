@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
@@ -103,7 +104,7 @@ const approachData = [
                 <ul className="list-disc list-inside space-y-1 mt-1">
                     <li>Auto-play next episode creates seamless continuation</li>
                     <li>"Continue Watching" prominent placement reduces friction</li>
-                    <li>Episode cliffangers and series structure encourage binging</li>
+                    <li>Episode cliffhangers and series structure encourage binging</li>
                 </ul>
             </div>
             <div>
@@ -202,7 +203,7 @@ const YouTubeCaseStudy: React.FC<YouTubeCaseStudyProps> = ({ navigateTo }) => {
                     transition={{ duration: 0.8 }}
                 >
                     <div className="flex justify-between items-center mb-4">
-                        <div className="text-sm text-gray-400">
+                        <div className="text-sm text-gray-400" aria-label="Breadcrumb">
                             <a onClick={() => navigateTo('home')} className="hover:text-white cursor-pointer">Home</a> / 
                             <a onClick={() => navigateTo('projects')} className="hover:text-white cursor-pointer"> Projects</a> / 
                             <span className="text-white"> Product Improvement of YouTube</span>
@@ -606,6 +607,7 @@ const YouTubeCaseStudy: React.FC<YouTubeCaseStudyProps> = ({ navigateTo }) => {
                            ))}
                         </div>
                     </div>
+                     <p className="mt-6 text-sm text-gray-500">For questions or feedback, contact: <a href="mailto:shubhasree.sarkar3103@gmail.com" className="hover:text-[#88FF55]">shubhasree.sarkar3103@gmail.com</a></p>
                 </motion.section>
 
 
@@ -627,6 +629,7 @@ const YouTubeCaseStudy: React.FC<YouTubeCaseStudyProps> = ({ navigateTo }) => {
                            View My Projects
                         </button>
                     </div>
+                    <p className="mt-6 text-sm text-gray-400">shubhasree.sarkar3103@gmail.com</p>
                 </motion.section>
             </div>
          </div>
