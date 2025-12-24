@@ -35,7 +35,7 @@ const educationData = [
   }
 ];
 
-const certificationData = [
+const fellowshipData = [
   {
     title: "Product Management Bootcamp",
     issuer: "Issued by Hello PM",
@@ -52,6 +52,53 @@ const certificationData = [
     languages: ["Python", "SQL", "R"],
     tools: ["Power BI", "Tableau"],
     verifyUrl: "https://drive.google.com/file/d/1XVpMYznyzo-LJla4g7NdjDuqM0wI_3gY/view"
+  },
+  {
+    title: "Data Science and Advanced Tableau Certification",
+    issuer: "Issued by Ivy Professional School",
+    topics: ["Data Science", "Predictive Modelling", "Machine Learning", "Advanced Excel"],
+    languages: ["Python", "SQL", "R"],
+    tools: ["Tableau", "Microsoft Excel", "Microsoft Power BI"],
+    verifyUrl: "https://drive.google.com/file/d/1rmIIOyhBNsHaM4eJlQUyuIe6eu6l0nHk/view?usp=sharing"
+  }
+];
+
+const certificationData = [
+  {
+    title: "Microsoft AI Product Manager Specialization",
+    issuer: "Issued by Microsoft",
+    topics: [
+      "Enterprise Product Management Fundamentals",
+      "Market Research and Competitive Analysis",
+      "Product Strategy and Roadmapping",
+      "Product Design and UX/UI Fundamentals",
+      "Product Launch and Post-Launch Management",
+      "User Interface (UI) Design",
+      "Persona Development",
+      "Product Strategy",
+      "User Story",
+      "Product Lifecycle Management",
+      "Market Opportunities",
+      "Competitive Intelligence",
+      "AI Product Strategy",
+      "Product Roadmaps",
+      "User Interface (UI)",
+      "Quality Assurance and Control",
+      "Competitive Analysis"
+    ],
+    verifyUrl: "https://www.coursera.org/account/accomplishments/specialization/OXFDOP2T9ZVF"
+  },
+  {
+    title: "Fractal SQL Developer Associate",
+    issuer: "Issued by Fractal",
+    topics: ["SQL", "Data Modeling", "Database Design", "Analytical Queries"],
+    verifyUrl: "https://www.credential.net/7ab376f5-b825-4de3-8a53-46aead0b1d30"
+  },
+  {
+    title: "Google Data Analytics Professional Certificate",
+    issuer: "Issued by Google via Coursera",
+    topics: ["Data Analysis", "R Programming", "SQL", "Spreadsheet Software", "Business Communication", "Business Analysis", "Data Visualization", "Data Management", "General Statistics", "Extract, Transform, Load"],
+    verifyUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/259N3DEH8FBY"
   }
 ];
 
@@ -119,9 +166,82 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                     ))}
                 </motion.div>
 
-                {/* Certifications & Fellowships */}
+                {/* Fellowships Header */}
                 <motion.div
-                    className="mt-24 md:mt-32 space-y-8"
+                    className="mt-24 md:mt-32 text-center"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#E6EAF2] relative inline-block">
+                        Fellowships & Specializations
+                        <motion.span
+                            className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: '100%' }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: 'easeInOut' }}
+                        />
+                    </h2>
+                </motion.div>
+
+                {/* Fellowships Content */}
+                <motion.div
+                    className="mt-12 space-y-8"
+                     variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                >
+                     {fellowshipData.map(cert => (
+                        <motion.div key={cert.title} variants={itemVariants} className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-lg">
+                           <div className="flex justify-between items-start flex-col sm:flex-row">
+                               <div>
+                                   <h3 className="text-2xl font-bold text-[#E6EAF2]">{cert.title}</h3>
+                                   <p className="text-md text-[#A8B0C2] mt-1">{cert.issuer}</p>
+                               </div>
+                               {cert.date && <p className="text-sm text-[#A8B0C2] mt-2 sm:mt-0">{cert.date}</p>}
+                           </div>
+                           {cert.summary && <p className="mt-4 text-[#A8B0C2] text-sm italic">"{cert.summary}"</p>}
+                           <div className="mt-4">
+                               <h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Topics Covered:</h4>
+                               <div className="flex flex-wrap gap-2">
+                                   {cert.topics.map(topic => <span key={topic} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full">{topic}</span>)}
+                               </div>
+                           </div>
+                           {cert.languages && <div className="mt-4"><h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Programming Languages:</h4><div className="flex flex-wrap gap-2">{cert.languages.map(lang => <span key={lang} className="px-3 py-1 text-xs bg-blue-900/50 text-blue-300 rounded-full">{lang}</span>)}</div></div>}
+                           {cert.tools && <div className="mt-4"><h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Visualization Tools:</h4><div className="flex flex-wrap gap-2">{cert.tools.map(tool => <span key={tool} className="px-3 py-1 text-xs bg-purple-900/50 text-purple-300 rounded-full">{tool}</span>)}</div></div>}
+                           <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-6 py-2 text-sm font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
+                               Verify
+                           </a>
+                        </motion.div>
+                     ))}
+                </motion.div>
+
+                {/* Certifications Header (Just above Research Publication) */}
+                <motion.div
+                    className="mt-24 md:mt-32 text-center"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#E6EAF2] relative inline-block">
+                        Certifications
+                        <motion.span
+                            className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: '100%' }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: 'easeInOut' }}
+                        />
+                    </h2>
+                </motion.div>
+
+                {/* Professional Certifications Content */}
+                <motion.div
+                    className="mt-12 space-y-8"
                      variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -134,17 +254,13 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                                    <h3 className="text-2xl font-bold text-[#E6EAF2]">{cert.title}</h3>
                                    <p className="text-md text-[#A8B0C2] mt-1">{cert.issuer}</p>
                                </div>
-                               <p className="text-sm text-[#A8B0C2] mt-2 sm:mt-0">{cert.date}</p>
                            </div>
-                           {cert.summary && <p className="mt-4 text-[#A8B0C2] text-sm italic">"{cert.summary}"</p>}
                            <div className="mt-4">
                                <h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Topics Covered:</h4>
                                <div className="flex flex-wrap gap-2">
                                    {cert.topics.map(topic => <span key={topic} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full">{topic}</span>)}
                                </div>
                            </div>
-                           {cert.languages && <div className="mt-4"><h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Programming Languages:</h4><div className="flex flex-wrap gap-2">{cert.languages.map(lang => <span key={lang} className="px-3 py-1 text-xs bg-blue-900/50 text-blue-300 rounded-full">{lang}</span>)}</div></div>}
-                           {cert.tools && <div className="mt-4"><h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Visualization Tools:</h4><div className="flex flex-wrap gap-2">{cert.tools.map(tool => <span key={tool} className="px-3 py-1 text-xs bg-purple-900/50 text-purple-300 rounded-full">{tool}</span>)}</div></div>}
                            <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-6 py-2 text-sm font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
                                Verify
                            </a>

@@ -38,7 +38,7 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
           <h2 className="mt-4 text-xl md:text-2xl lg:text-3xl text-gray-300">
             A Decision Scientist & Product Enthusiast
           </h2>
-          <p className="mt-6 max-w-3xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed">
+          <p className="mt-6 max-w-3xl mx-auto text-2xl md:text-3xl text-gray-400 leading-relaxed">
             I bridge the gap between data and decisions, leveraging advanced analytics and machine learning to build intelligent products that drive business growth and user engagement.
           </p>
         </motion.div>
