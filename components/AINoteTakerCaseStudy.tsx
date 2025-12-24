@@ -465,7 +465,6 @@ const AINoteTakerCaseStudy: React.FC<AINoteTakerCaseStudyProps> = ({ navigateTo 
                         View on Pitch.com 
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     </a>
-                    <p className="mt-6 text-sm text-gray-500">For questions or feedback, contact: <a href="mailto:shubhasree.sarkar3103@gmail.com" className="hover:text-[#88FF55]">shubhasree.sarkar3103@gmail.com</a></p>
                 </motion.section>
 
                  {/* Final CTA Section from Screenshot */}
@@ -486,7 +485,6 @@ const AINoteTakerCaseStudy: React.FC<AINoteTakerCaseStudyProps> = ({ navigateTo 
                            View My Projects
                         </button>
                     </div>
-                    <p className="mt-6 text-sm text-gray-400">shubhasree.sarkar3103@gmail.com</p>
                 </motion.section>
             </div>
         </div>

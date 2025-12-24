@@ -164,7 +164,7 @@ const Skills: React.FC<SkillsProps> = ({ navigateTo }) => {
                         <motion.div
                             key={category.title}
                             variants={itemVariants}
-                            className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 motion-safe:hover:-translate-y-2 hover:border-[rgba(136,255,85,0.35)] group"
+                            className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30_rgba(0,0,0,0.35)] transition-all duration-300 motion-safe:hover:-translate-y-2 hover:border-[rgba(136,255,85,0.35)] group"
                         >
                             <h3 className="text-xl font-bold text-[#E6EAF2] mb-6 group-hover:text-white transition-colors">{category.title}</h3>
                             <ul className="space-y-4">
@@ -195,7 +195,7 @@ const Skills: React.FC<SkillsProps> = ({ navigateTo }) => {
                         </motion.h2>
                         <p className="mt-4 max-w-3xl mx-auto text-[#A8B0C2] transition-colors duration-300 hover:text-white cursor-default">Leveraging data-driven insights and product management frameworks to drive business growth and user engagement.</p>
                     </div>
-                    <div className="max-w-3xl mx-auto p-6 md:p-8 bg-[#111623] rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] flex justify-center transition-all duration-300 hover:border-[#88FF55]/30">
+                    <div className="max-w-3xl mx-auto p-6 md:p-8 bg-[#111623] rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30_rgba(0,0,0,0.35)] flex justify-center transition-all duration-300 hover:border-[#88FF55]/30">
                         <div className="w-full max-w-lg aspect-square">
                             <RadarChart />
                         </div>
@@ -226,9 +226,6 @@ const Skills: React.FC<SkillsProps> = ({ navigateTo }) => {
                             View My Experience
                         </button>
                     </div>
-                     <p className="mt-6 text-sm text-[#A8B0C2]">
-                        shubhasree.sarkar3103@gmail.com
-                    </p>
                 </motion.div>
             </div>
         </div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
@@ -607,7 +606,6 @@ const YouTubeCaseStudy: React.FC<YouTubeCaseStudyProps> = ({ navigateTo }) => {
                            ))}
                         </div>
                     </div>
-                     <p className="mt-6 text-sm text-gray-500">For questions or feedback, contact: <a href="mailto:shubhasree.sarkar3103@gmail.com" className="hover:text-[#88FF55]">shubhasree.sarkar3103@gmail.com</a></p>
                 </motion.section>
 
 
@@ -629,7 +627,6 @@ const YouTubeCaseStudy: React.FC<YouTubeCaseStudyProps> = ({ navigateTo }) => {
                            View My Projects
                         </button>
                     </div>
-                    <p className="mt-6 text-sm text-gray-400">shubhasree.sarkar3103@gmail.com</p>
                 </motion.section>
             </div>
          </div>

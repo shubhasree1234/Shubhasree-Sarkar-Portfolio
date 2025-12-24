@@ -214,7 +214,6 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                                 View My Resume
                             </button>
                         </div>
-                        <p className="mt-6 text-sm text-[#A8B0C2]">shubhasree.sarkar3103@gmail.com</p>
                     </motion.div>
                 </div>
             </div>
