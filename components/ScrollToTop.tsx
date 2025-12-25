@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -37,7 +36,7 @@ const ScrollToTop: React.FC = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-[#88FF55] text-[#0C0F1D] shadow-lg neon-glow transition-shadow duration-300 focus:outline-none"
+          className="fixed bottom-8 right-8 z-50 p-3 rounded-sm bg-[#C5A059] text-[#0C0F1D] shadow-lg neon-glow transition-shadow duration-300 focus:outline-none"
           aria-label="Scroll to top"
         >
           <svg
@@ -46,7 +45,7 @@ const ScrollToTop: React.FC = () => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth={2.5}
+            strokeWidth={3}
           >
             <path
               strokeLinecap="round"

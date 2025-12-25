@@ -51,7 +51,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo, theme, toggleT
     }
   };
 
-  // Fix: Explicitly type variants as Variants to resolve ease and orchestration property inference issues
   const menuVariants: Variants = {
     closed: {
       opacity: 0,
@@ -69,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo, theme, toggleT
       height: 'auto',
       transition: {
         duration: 0.4,
-        ease: [0.22, 1, 0.36, 1], // Custom ease-out expo for subtle feel
+        ease: [0.22, 1, 0.36, 1],
         when: 'beforeChildren',
         staggerChildren: 0.07,
         delayChildren: 0.1
@@ -77,7 +76,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo, theme, toggleT
     }
   };
 
-  // Fix: Explicitly type variants as Variants
   const itemVariants: Variants = {
     closed: { opacity: 0, x: -8 },
     open: { opacity: 1, x: 0 }
@@ -89,8 +87,8 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo, theme, toggleT
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
             <a onClick={() => handleNavClick('home', '#home')} className="text-2xl font-bold tracking-wider neon-text text-glow cursor-pointer transition-colors duration-500">
-              Shubhasree
-              <span className="text-theme-primary"> Sarkar</span>
+              SHUBHASREE
+              <span className="text-theme-primary"> SARKAR</span>
             </a>
           </div>
           <nav className="hidden lg:flex lg:items-center lg:space-x-8">
@@ -101,10 +99,10 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo, theme, toggleT
                 <a
                   key={link.name}
                   onClick={() => handleNavClick(link.page, link.href)}
-                  className={`cursor-pointer text-base font-medium transition-colors duration-300 relative group ${isActive ? 'neon-text' : 'text-theme-secondary hover:neon-text'}`}
+                  className={`cursor-pointer text-sm uppercase tracking-[0.1em] font-medium transition-colors duration-300 relative group ${isActive ? 'neon-text' : 'text-theme-secondary hover:neon-text'}`}
                 >
                   {link.name}
-                  <span className={`absolute bottom-[-4px] left-0 h-0.5 bg-[#88FF55] transition-all duration-300 group-hover:w-full ${isActive ? 'w-full' : 'w-0'}`}></span>
+                  <span className={`absolute bottom-[-4px] left-0 h-0.5 bg-[#C5A059] transition-all duration-300 group-hover:w-full ${isActive ? 'w-full' : 'w-0'}`}></span>
                 </a>
               );
             })}
@@ -112,9 +110,9 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo, theme, toggleT
           <div className="hidden lg:flex items-center space-x-6">
             <button
               onClick={() => navigateTo('contact')}
-              className="cursor-pointer px-5 py-2.5 text-base font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-all duration-300 hover:scale-105 hover:neon-glow"
+              className="cursor-pointer px-6 py-2.5 text-sm uppercase tracking-widest font-bold text-[#0C0F1D] bg-[#C5A059] rounded-sm transition-all duration-300 hover:scale-105 hover:neon-glow"
             >
-              Get In Touch
+              CONTACT
             </button>
           </div>
           <div className="lg:hidden flex items-center space-x-4">
@@ -177,9 +175,9 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo, theme, toggleT
                <motion.button
                 variants={itemVariants}
                 onClick={() => { setIsOpen(false); navigateTo('contact'); }}
-                className="px-8 py-3 text-base font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-all duration-300 hover:scale-105 hover:neon-glow"
+                className="px-8 py-3 text-base font-semibold text-[#0C0F1D] bg-[#C5A059] rounded-lg transition-all duration-300 hover:scale-105 hover:neon-glow"
               >
-                Get In Touch
+                Contact
               </motion.button>
             </nav>
           </motion.div>

@@ -119,13 +119,13 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                 >
                     <motion.h1 
                         whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
-                        className="text-4xl md:text-5xl font-bold tracking-tight text-[#88FF55] text-glow relative inline-block cursor-default"
+                        className="text-4xl md:text-5xl font-bold tracking-tight text-[#C5A059] text-glow relative inline-block cursor-default"
                     >
                         Education & Learning
                         <motion.span
-                            className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
+                            className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#C5A059]"
                             initial={{ width: 0 }}
-                            animate={{ width: '100%' }}
+                            whileInView={{ width: '100%' }}
                             transition={{ duration: 0.8, delay: 0.5, ease: 'easeInOut' }}
                         />
                     </motion.h1>
@@ -148,22 +148,22 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                         <motion.div
                             key={edu.degree}
                             variants={itemVariants}
-                            className="flex flex-col bg-[#111623] p-6 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 motion-safe:hover:-translate-y-1.5 hover:border-[rgba(136,255,85,0.35)] group"
+                            className="flex flex-col bg-[#111623] p-6 rounded-[14px] border border-[rgba(197,160,89,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 motion-safe:hover:-translate-y-1.5 hover:border-[rgba(197,160,89,0.35)] group"
                         >
                             <div className="flex justify-between items-start">
                                 <div>
                                     <h3 className="text-xl font-bold text-[#E6EAF2] group-hover:text-white transition-colors">{edu.degree}</h3>
-                                    <p className="text-sm text-[#A8B0C2]">{edu.specialization}</p>
+                                    <p className="text-sm text-[#A8B0C2] font-semibold">{edu.specialization}</p>
                                 </div>
                             </div>
-                             <p className="text-md text-[#A8B0C2] my-4">{edu.institution}</p>
+                             <p className="text-md text-[#C5A059] font-medium my-4">{edu.institution}</p>
                             <div className="flex-grow">
-                                <h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Topics Covered:</h4>
+                                <h4 className="text-xs uppercase tracking-widest font-bold text-[#E6EAF2] mb-3">Topics Covered:</h4>
                                 <div className="flex flex-wrap gap-2">
-                                    {edu.topics.map(topic => <span key={topic} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full">{topic}</span>)}
+                                    {edu.topics.map(topic => <span key={topic} className="px-3 py-1 text-[10px] uppercase font-bold border border-[#C5A059]/20 bg-gray-700/30 text-gray-300 rounded-sm">{topic}</span>)}
                                 </div>
                             </div>
-                            <a href={edu.certificateUrl} target="_blank" rel="noopener noreferrer" className="block text-center mt-6 w-full px-4 py-2 text-sm font-semibold text-[#E6EAF2] border-2 border-gray-600 rounded-lg transition-all duration-300 hover:scale-105 hover:border-[#88FF55] hover:neon-text">
+                            <a href={edu.certificateUrl} target="_blank" rel="noopener noreferrer" className="block text-center mt-6 w-full px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#E6EAF2] border border-gray-600 rounded-sm transition-all duration-300 hover:scale-105 hover:border-[#C5A059] hover:neon-text">
                                 View Certificate
                             </a>
                         </motion.div>
@@ -183,7 +183,7 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                     >
                         Fellowships & Specializations
                         <motion.span
-                            className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
+                            className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#C5A059]"
                             initial={{ width: 0 }}
                             whileInView={{ width: '100%' }}
                             viewport={{ once: true }}
@@ -200,25 +200,25 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                     viewport={{ once: true, amount: 0.2 }}
                 >
                      {fellowshipData.map(cert => (
-                        <motion.div key={cert.title} variants={itemVariants} className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-lg hover:border-[#88FF55]/30 transition-colors group">
+                        <motion.div key={cert.title} variants={itemVariants} className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(197,160,89,0.14)] shadow-lg hover:border-[#C5A059]/30 transition-colors group">
                            <div className="flex justify-between items-start flex-col sm:flex-row">
                                <div>
                                    <h3 className="text-2xl font-bold text-[#E6EAF2] group-hover:text-white transition-colors">{cert.title}</h3>
-                                   <p className="text-md text-[#A8B0C2] mt-1">{cert.issuer}</p>
+                                   <p className="text-md text-[#C5A059] font-medium mt-1">{cert.issuer}</p>
                                </div>
-                               {cert.date && <p className="text-sm text-[#A8B0C2] mt-2 sm:mt-0">{cert.date}</p>}
+                               {cert.date && <p className="text-sm text-[#A8B0C2] font-semibold mt-2 sm:mt-0">{cert.date}</p>}
                            </div>
-                           {cert.summary && <p className="mt-4 text-[#A8B0C2] text-sm italic">"{cert.summary}"</p>}
-                           <div className="mt-4">
-                               <h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Topics Covered:</h4>
+                           {cert.summary && <p className="mt-4 text-[#A8B0C2] text-sm italic leading-relaxed">"{cert.summary}"</p>}
+                           <div className="mt-6">
+                               <h4 className="text-xs uppercase tracking-widest font-bold text-[#E6EAF2] mb-3">Topics Covered:</h4>
                                <div className="flex flex-wrap gap-2">
-                                   {cert.topics.map(topic => <span key={topic} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full">{topic}</span>)}
+                                   {cert.topics.map(topic => <span key={topic} className="px-3 py-1 text-[10px] uppercase font-bold border border-[#C5A059]/10 bg-gray-700/30 text-gray-300 rounded-sm">{topic}</span>)}
                                </div>
                            </div>
-                           {cert.languages && <div className="mt-4"><h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Programming Languages:</h4><div className="flex flex-wrap gap-2">{cert.languages.map(lang => <span key={lang} className="px-3 py-1 text-xs bg-blue-900/50 text-blue-300 rounded-full">{lang}</span>)}</div></div>}
-                           {cert.tools && <div className="mt-4"><h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Visualization Tools:</h4><div className="flex flex-wrap gap-2">{cert.tools.map(tool => <span key={tool} className="px-3 py-1 text-xs bg-purple-900/50 text-purple-300 rounded-full">{tool}</span>)}</div></div>}
-                           <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-6 py-2 text-sm font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
-                               Verify
+                           {cert.languages && <div className="mt-6"><h4 className="text-xs uppercase tracking-widest font-bold text-[#E6EAF2] mb-3">Programming Languages:</h4><div className="flex flex-wrap gap-2">{cert.languages.map(lang => <span key={lang} className="px-3 py-1 text-[10px] uppercase font-bold bg-blue-900/40 text-blue-300 rounded-sm">{lang}</span>)}</div></div>}
+                           {cert.tools && <div className="mt-6"><h4 className="text-xs uppercase tracking-widest font-bold text-[#E6EAF2] mb-3">Visualization Tools:</h4><div className="flex flex-wrap gap-2">{cert.tools.map(tool => <span key={tool} className="px-3 py-1 text-[10px] uppercase font-bold bg-purple-900/40 text-purple-300 rounded-sm">{tool}</span>)}</div></div>}
+                           <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-block mt-8 px-8 py-3 text-xs font-bold uppercase tracking-widest text-[#0C0F1D] bg-[#C5A059] rounded-sm transition-transform duration-300 hover:scale-105 hover:neon-glow">
+                               Verify Credentials
                            </a>
                         </motion.div>
                      ))}
@@ -235,9 +235,9 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                         whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
                         className="text-3xl md:text-4xl font-bold text-[#E6EAF2] relative inline-block cursor-default"
                     >
-                        Certifications
+                        Professional Certifications
                         <motion.span
-                            className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
+                            className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#C5A059]"
                             initial={{ width: 0 }}
                             whileInView={{ width: '100%' }}
                             viewport={{ once: true }}
@@ -254,21 +254,21 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                     viewport={{ once: true, amount: 0.2 }}
                 >
                      {certificationData.map(cert => (
-                        <motion.div key={cert.title} variants={itemVariants} className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-lg hover:border-[#88FF55]/30 transition-colors group">
+                        <motion.div key={cert.title} variants={itemVariants} className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(197,160,89,0.14)] shadow-lg hover:border-[#C5A059]/30 transition-colors group">
                            <div className="flex justify-between items-start flex-col sm:flex-row">
                                <div>
                                    <h3 className="text-2xl font-bold text-[#E6EAF2] group-hover:text-white transition-colors">{cert.title}</h3>
-                                   <p className="text-md text-[#A8B0C2] mt-1">{cert.issuer}</p>
+                                   <p className="text-md text-[#C5A059] font-medium mt-1">{cert.issuer}</p>
                                </div>
                            </div>
-                           <div className="mt-4">
-                               <h4 className="text-sm font-semibold text-[#E6EAF2] mb-2">Topics Covered:</h4>
+                           <div className="mt-6">
+                               <h4 className="text-xs uppercase tracking-widest font-bold text-[#E6EAF2] mb-3">Topics Covered:</h4>
                                <div className="flex flex-wrap gap-2">
-                                   {cert.topics.map(topic => <span key={topic} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full">{topic}</span>)}
+                                   {cert.topics.map(topic => <span key={topic} className="px-3 py-1 text-[10px] uppercase font-bold border border-[#C5A059]/10 bg-gray-700/30 text-gray-300 rounded-sm">{topic}</span>)}
                                </div>
                            </div>
-                           <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-6 py-2 text-sm font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
-                               Verify
+                           <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-block mt-8 px-8 py-3 text-xs font-bold uppercase tracking-widest text-[#0C0F1D] bg-[#C5A059] rounded-sm transition-transform duration-300 hover:scale-105 hover:neon-glow">
+                               Verify Credentials
                            </a>
                         </motion.div>
                      ))}
@@ -283,20 +283,20 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                 >
                     <motion.h2 
                         whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
-                        className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#E6EAF2] cursor-default"
+                        className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#E6EAF2] cursor-default uppercase tracking-widest"
                     >
                         Research Publication
                     </motion.h2>
-                    <div className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-lg motion-safe:hover:-translate-y-1.5 hover:border-[rgba(136,255,85,0.35)] transition-all duration-300">
-                        <p className="text-sm font-semibold text-[#88FF55]">Advanced Machine Intelligence and Signal Processing • Springer • June 2022</p>
-                        <h3 className="text-2xl font-bold text-[#E6EAF2] mt-2">Study of Machine Learning Techniques to Mitigate Fraudulent Transactions in Credit Cards</h3>
-                        <p className="mt-4 text-[#A8B0C2]">“Research paper on machine learning approaches for credit card fraud detection, published in Springer Advanced Machine Intelligence and Signal Processing series.”</p>
-                        <p className="mt-4 text-xs text-gray-500 italic">Citation: “Sarkar, S. et al. (2022). Study of Machine Learning Techniques to Mitigate Fraudulent Transactions in Credit Cards. Springer.”</p>
-                        <div className="mt-6 flex items-center gap-4 flex-wrap">
-                            <a href="https://link.springer.com/chapter/10.1007/978-981-19-0840-8_42" target="_blank" rel="noopener noreferrer" className="px-6 py-2 text-sm font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
+                    <div className="bg-[#111623] p-8 rounded-[14px] border border-[rgba(197,160,89,0.14)] shadow-lg hover:border-[#C5A059]/35 transition-all duration-300">
+                        <p className="text-xs font-bold uppercase tracking-widest text-[#C5A059]">Advanced Machine Intelligence and Signal Processing • Springer • June 2022</p>
+                        <h3 className="text-2xl font-bold text-[#E6EAF2] mt-3">Study of Machine Learning Techniques to Mitigate Fraudulent Transactions in Credit Cards</h3>
+                        <p className="mt-4 text-[#A8B0C2] text-sm leading-relaxed">“Research paper on machine learning approaches for credit card fraud detection, published in Springer Advanced Machine Intelligence and Signal Processing series.”</p>
+                        <p className="mt-4 text-[10px] uppercase tracking-widest text-gray-500 font-bold italic">Citation: “Sarkar, S. et al. (2022). Study of Machine Learning Techniques to Mitigate Fraudulent Transactions in Credit Cards. Springer.”</p>
+                        <div className="mt-8 flex items-center gap-6 flex-wrap">
+                            <a href="https://link.springer.com/chapter/10.1007/978-981-19-0840-8_42" target="_blank" rel="noopener noreferrer" className="px-10 py-3 text-xs font-bold uppercase tracking-widest text-[#0C0F1D] bg-[#C5A059] rounded-sm transition-transform duration-300 hover:scale-105 hover:neon-glow">
                                 Read Publication
                             </a>
-                            <span className="px-3 py-1 text-xs font-medium text-cyan-300 bg-cyan-900/50 rounded-full">Peer Reviewed</span>
+                            <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-300 bg-cyan-900/30 border border-cyan-300/20 rounded-sm">Peer Reviewed</span>
                         </div>
                     </div>
                 </motion.div>
@@ -309,11 +309,11 @@ const Education: React.FC<EducationProps> = ({ navigateTo }) => {
                     transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 >
                     <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#E6EAF2]">Curious about my skills?</h2>
-                    <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button onClick={() => navigateTo('skills')} className="w-full sm:w-auto px-8 py-3 text-lg font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
+                    <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <button onClick={() => navigateTo('skills')} className="w-full sm:w-auto px-10 py-4 text-sm font-bold tracking-widest uppercase text-[#0C0F1D] bg-[#C5A059] rounded-sm transition-transform duration-300 hover:scale-105 hover:neon-glow">
                            Explore Skills
                         </button>
-                        <button onClick={() => navigateTo('contact')} className="w-full sm:w-auto px-8 py-3 text-lg font-semibold text-gray-200 border-2 border-gray-600 rounded-lg transition-all duration-300 hover:scale-105 hover:border-[#88FF55] hover:neon-text">
+                        <button onClick={() => navigateTo('contact')} className="w-full sm:w-auto px-10 py-4 text-sm font-bold tracking-widest uppercase text-[#C5A059] border-2 border-[#C5A059]/40 rounded-sm transition-all duration-300 hover:scale-105 hover:border-[#C5A059] hover:neon-text">
                            Get In Touch
                         </button>
                     </div>

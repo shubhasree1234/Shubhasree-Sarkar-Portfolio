@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
 
@@ -68,16 +67,16 @@ const Metrics: React.FC = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="relative text-center p-6 bg-gray-500/5 backdrop-blur-sm rounded-xl border border-gray-800 transition-all duration-300 hover:border-[#88FF55]/50 hover:bg-gray-500/10"
+              className="relative text-center p-6 bg-gray-500/5 backdrop-blur-sm rounded-xl border border-gray-800 transition-all duration-300 hover:border-[#C5A059]/50 hover:bg-gray-500/10"
             >
               {metric.value ? (
                 <AnimatedCounter from={0} to={metric.value} text={metric.text} />
               ) : (
                  <p className="text-3xl md:text-4xl font-bold neon-text text-glow h-14 flex items-center justify-center">{metric.text}</p>
               )}
-              <p className="mt-2 text-gray-400">{metric.label}</p>
+              <p className="mt-2 text-gray-400 font-medium tracking-wide uppercase text-xs">{metric.label}</p>
               {index < METRICS_DATA.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 right-0 w-px h-16 bg-gradient-to-b from-transparent via-[#88FF55]/50 to-transparent transform -translate-y-1/2"></div>
+                <div className="hidden lg:block absolute top-1/2 right-0 w-px h-16 bg-gradient-to-b from-transparent via-[#C5A059]/30 to-transparent transform -translate-y-1/2"></div>
               )}
             </motion.div>
           ))}

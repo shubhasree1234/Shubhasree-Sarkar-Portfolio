@@ -38,7 +38,7 @@ const CursorGlow: React.FC<{ theme: string }> = ({ theme }) => {
     <div 
       className="pointer-events-none fixed inset-0 z-50 transition duration-300 hidden lg:block"
       style={{
-        background: `radial-gradient(600px at ${position.x}px ${position.y}px, rgba(136, 255, 85, 0.1), transparent 80%)`
+        background: `radial-gradient(600px at ${position.x}px ${position.y}px, rgba(197, 160, 89, 0.08), transparent 80%)`
       }}
     />
   );

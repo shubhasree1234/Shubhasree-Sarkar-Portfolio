@@ -53,10 +53,10 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
                     animate={{ scale: 1, y: 0 }}
                     exit={{ scale: 0.9, y: 20 }}
                     onClick={(e) => e.stopPropagation()}
-                    className="relative w-full max-w-2xl bg-[#111623] rounded-xl border border-[#88FF55]/20 shadow-2xl p-8"
+                    className="relative w-full max-w-2xl bg-[#111623] rounded-xl border border-[#C5A059]/20 shadow-2xl p-8"
                 >
                     <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white">&times;</button>
-                    <h2 className="text-2xl font-bold text-[#88FF55]">{project.title}</h2>
+                    <h2 className="text-2xl font-bold text-[#C5A059]">{project.title}</h2>
                     <p className="mt-4 text-gray-300">A detailed case study for this project is currently being written. Here's a quick summary:</p>
                     <p className="mt-2 text-gray-400">{project.description}</p>
                     <div className="mt-6">
@@ -67,7 +67,7 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
                             <li>Presented actionable recommendations to stakeholders.</li>
                         </ul>
                     </div>
-                    <p className="mt-6 text-sm text-center text-[#88FF55]">Full Case Study Coming Soon!</p>
+                    <p className="mt-6 text-sm text-center text-[#C5A059]">Full Case Study Coming Soon!</p>
                 </motion.div>
             </motion.div>
         </AnimatePresence>
@@ -106,11 +106,11 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                     >
                         <motion.h1 
                             whileHover={{ scale: 1.02, x: 5 }}
-                            className="text-4xl md:text-5xl font-bold tracking-tight text-[#88FF55] text-glow relative inline-block cursor-default"
+                            className="text-4xl md:text-5xl font-bold tracking-tight text-[#C5A059] text-glow relative inline-block cursor-default"
                         >
                             My Projects
                             <motion.span
-                                className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#88FF55]"
+                                className="absolute bottom-[-8px] left-0 w-full h-1 bg-[#C5A059]"
                                 initial={{ width: 0 }}
                                 whileInView={{ width: '100%' }}
                                 transition={{ duration: 0.8, delay: 0.5, ease: 'easeInOut' }}
@@ -136,7 +136,7 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                             <button
                                 key={filter}
                                 onClick={() => setActiveFilter(filter)}
-                                className={`px-4 py-2 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ${activeFilter === filter ? 'bg-[#88FF55] text-[#0C0F1D]' : 'bg-transparent text-[#A8B0C2] border border-gray-700 hover:bg-gray-800 hover:text-white'}`}
+                                className={`px-4 py-2 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ${activeFilter === filter ? 'bg-[#C5A059] text-[#0C0F1D]' : 'bg-transparent text-[#A8B0C2] border border-gray-700 hover:bg-gray-800 hover:text-white'}`}
                             >
                                 {filter}
                             </button>
@@ -159,7 +159,7 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                                     exit={{ opacity: 0, scale: 0.8 }}
                                     whileHover={{ scale: 1.02, y: -6 }}
                                     transition={{ duration: 0.4, ease: 'easeOut' }}
-                                    className="cursor-pointer flex flex-col bg-[#111623] rounded-[14px] border border-[rgba(136,255,85,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-[#88FF55]/40 hover:shadow-[0_0_20px_rgba(136,255,85,0.15),0_10px_30px_rgba(0,0,0,0.4)] group"
+                                    className="cursor-pointer flex flex-col bg-[#111623] rounded-[14px] border border-[rgba(197,160,89,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-[#C5A059]/40 hover:shadow-[0_0_20px_rgba(197,160,89,0.15),0_10px_30px_rgba(0,0,0,0.4)] group"
                                     tabIndex={0}
                                     onClick={() => handleCardClick(project)}
                                     onKeyDown={(e) => e.key === 'Enter' && handleCardClick(project)}
@@ -167,7 +167,7 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                                     <div className="p-6 flex-grow flex flex-col">
                                         <div className="flex justify-between items-start">
                                             <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${project.category === 'Academic' ? 'bg-blue-900/50 text-blue-300' : 'bg-purple-900/50 text-purple-300'}`}>{project.category}</span>
-                                            <div className="text-gray-500 group-hover:text-[#88FF55] transition-colors">
+                                            <div className="text-gray-500 group-hover:text-[#C5A059] transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                             </div>
                                         </div>
@@ -207,10 +207,10 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                             Every project is a journey of discovery. If you’re curious about my process or want to discuss a potential collaboration, I’d love to chat.
                         </motion.p>
                         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <button onClick={() => navigateTo('contact')} className="w-full sm:w-auto px-8 py-3 text-lg font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
+                            <button onClick={() => navigateTo('contact')} className="w-full sm:w-auto px-8 py-3 text-lg font-semibold text-[#0C0F1D] bg-[#C5A059] rounded-lg transition-transform duration-300 hover:scale-105 hover:neon-glow">
                                Let's Talk
                             </button>
-                            <button onClick={() => navigateTo('resume')} className="w-full sm:w-auto px-8 py-3 text-lg font-semibold text-gray-200 border-2 border-gray-600 rounded-lg transition-all duration-300 hover:scale-105 hover:border-[#88FF55] hover:neon-text">
+                            <button onClick={() => navigateTo('resume')} className="w-full sm:w-auto px-8 py-3 text-lg font-semibold text-gray-200 border-2 border-gray-600 rounded-lg transition-all duration-300 hover:scale-105 hover:border-[#C5A059] hover:neon-text">
                                 View My Resume
                             </button>
                         </div>

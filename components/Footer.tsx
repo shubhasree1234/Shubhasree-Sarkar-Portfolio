@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const GithubIcon = () => (
@@ -43,22 +42,22 @@ const Footer: React.FC<FooterProps> = ({ currentPage, navigateTo }) => {
     ];
 
   return (
-    <footer className="bg-[#111526] border-t border-[#88FF55]/20">
+    <footer className="bg-[#111526] border-t border-[#C5A059]/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           {/* Left: Logo + Tagline */}
           <div>
-            <h3 className="text-xl font-bold neon-text text-glow">Shubhasree Sarkar</h3>
-            <p className="mt-2 text-gray-400 text-sm">Decision Scientist & Product Enthusiast</p>
+            <h3 className="text-xl font-bold neon-text text-glow uppercase tracking-widest">SHUBHASREE SARKAR</h3>
+            <p className="mt-2 text-[#A8B0C2] text-xs uppercase tracking-widest font-medium">Decision Scientist & Product Enthusiast</p>
           </div>
           
           {/* Center: Quick Links */}
           <div>
-            <h4 className="font-semibold text-gray-200 tracking-wider">Quick Links</h4>
+            <h4 className="font-bold text-gray-200 tracking-widest uppercase text-xs">Quick Links</h4>
             <ul className="mt-4 space-y-2">
               {quickLinks.map(link => (
                 <li key={link.name}>
-                  <a onClick={() => navigateTo(link.page)} className="cursor-pointer text-gray-400 hover:neon-text transition-colors duration-300">{link.name}</a>
+                  <a onClick={() => navigateTo(link.page)} className="cursor-pointer text-sm text-gray-400 hover:neon-text transition-colors duration-300">{link.name}</a>
                 </li>
               ))}
             </ul>
@@ -66,7 +65,7 @@ const Footer: React.FC<FooterProps> = ({ currentPage, navigateTo }) => {
           
           {/* Right: Contact + Social */}
           <div>
-            <h4 className="font-semibold text-gray-200 tracking-wider">Get In Touch</h4>
+            <h4 className="font-bold text-gray-200 tracking-widest uppercase text-xs">Get In Touch</h4>
             <div className="mt-4 flex justify-center md:justify-start space-x-4">
                 {socialLinks.map((link) => (
                     <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:neon-text hover:scale-110 transition-all duration-300">
@@ -74,14 +73,14 @@ const Footer: React.FC<FooterProps> = ({ currentPage, navigateTo }) => {
                     </a>
                 ))}
             </div>
-             <p className="mt-4 text-sm text-gray-500">
-                <a href="mailto:shubhasree.sarkar3103@gmail.com" className="hover:text-[#88FF55] transition-colors">
+             <p className="mt-4 text-xs font-semibold text-gray-500">
+                <a href="mailto:shubhasree.sarkar3103@gmail.com" className="hover:text-[#C5A059] transition-colors">
                   shubhasree.sarkar3103@gmail.com
                 </a>
              </p>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-[10px] uppercase tracking-widest font-medium">
           <p>&copy; {new Date().getFullYear()} Shubhasree Sarkar. All Rights Reserved.</p>
         </div>
       </div>

@@ -13,10 +13,12 @@
             'theme-primary': 'var(--bg-primary)',
             'theme-secondary': 'var(--bg-secondary)',
             'theme-accent': 'var(--border-color)',
+            'gold-accent': '#C5A059',
           },
           textColor: {
             'theme-primary': 'var(--text-primary)',
             'theme-secondary': 'var(--text-secondary)',
+            'gold': '#C5A059',
           }
         }
       }
@@ -24,14 +26,15 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-primary: #0C0F1D;
       --bg-secondary: #111526;
       --text-primary: #E0E0E0;
       --text-secondary: #A8B0C2;
-      --border-color: rgba(136, 255, 85, 0.1);
+      --border-color: rgba(197, 160, 89, 0.1);
+      --gold: #C5A059;
     }
     .light {
       --bg-primary: #F8FAFC;
@@ -41,23 +44,23 @@
       --border-color: rgba(0, 0, 0, 0.1);
     }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: var(--bg-primary);
       color: var(--text-primary);
       scroll-behavior: smooth;
       transition: background-color 0.5s ease, color 0.5s ease;
     }
     .neon-text {
-      color: #88FF55;
+      color: var(--gold);
     }
     .neon-glow {
-      box-shadow: 0 0 5px #88FF55, 0 0 10px #88FF55, 0 0 15px #88FF55;
+      box-shadow: 0 0 5px var(--gold), 0 0 10px var(--gold);
     }
     .neon-border {
-       border-color: #88FF55;
+       border-color: var(--gold);
     }
     .text-glow {
-      text-shadow: 0 0 2px rgba(136, 255, 85, 0.5);
+      text-shadow: 0 0 8px rgba(197, 160, 89, 0.6);
     }
     /* Subtle Film Grain Noise Overlay */
     .noise-overlay {

@@ -30,16 +30,15 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
     <section id="home" className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden">
        <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-[#0C0F1D]"></div>
-        {/* Animated Background Glow */}
         <motion.div
-          className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-[#88ff55]/10 to-transparent rounded-full blur-[100px]"
+          className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-[#C5A059]/10 to-transparent rounded-full blur-[120px]"
           animate={{
             x: ['-50%', '-55%', '-50%'],
             y: ['-50%', '-45%', '-50%'],
-            scale: [1, 1.1, 1],
+            scale: [1, 1.15, 1],
           }}
           transition={{
-            duration: 20,
+            duration: 15,
             ease: 'easeInOut',
             repeat: Infinity,
             repeatType: 'reverse',
@@ -54,47 +53,40 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
           animate="visible"
           className="flex flex-col items-center"
         >
-          {/* Main Title */}
           <motion.h1 
             variants={itemVariants}
-            whileHover={{ y: -5, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight cursor-default inline-block select-none"
+            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight cursor-default inline-block select-none mb-4"
           >
-            Hi, I’m <span className="neon-text text-glow transition-all duration-500 hover:brightness-125">Shubhasree Sarkar</span>
+            <span className="neon-text text-glow transition-all duration-500 hover:brightness-125">SHUBHASREE SARKAR</span>
           </motion.h1>
           
-          {/* Subtitle */}
           <motion.h2 
             variants={itemVariants}
-            whileHover={{ scale: 1.02, color: '#88FF55', transition: { duration: 0.3 } }}
-            className="mt-6 text-xl md:text-2xl lg:text-3xl text-gray-300 font-medium tracking-wide cursor-default transition-colors duration-300"
+            className="mt-4 text-xl md:text-2xl lg:text-3xl text-[#E0E0E0] font-semibold tracking-[0.3em] uppercase cursor-default transition-colors duration-300"
           >
             Decision Scientist & Product Enthusiast
           </motion.h2>
 
-          {/* Description */}
           <motion.p 
             variants={itemVariants}
-            whileHover={{ color: '#FFFFFF', transition: { duration: 0.4 } }}
-            className="mt-8 max-w-3xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed cursor-default transition-colors duration-300"
+            className="mt-10 max-w-2xl mx-auto text-lg md:text-xl text-[#A8B0C2] leading-relaxed cursor-default transition-colors duration-300"
           >
             I bridge the gap between data and decisions, leveraging advanced analytics and machine learning to build intelligent products that drive business growth and user engagement.
           </motion.p>
 
-          {/* CTA Buttons - Added to Hero for better UX */}
           <motion.div 
             variants={itemVariants}
-            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-6"
           >
              <button
               onClick={() => navigateTo('projects')}
-              className="w-full sm:w-auto px-8 py-3.5 text-lg font-semibold text-[#0C0F1D] bg-[#88FF55] rounded-xl transition-all duration-300 hover:scale-105 hover:neon-glow active:scale-95"
+              className="w-full sm:w-auto px-10 py-4 text-sm font-bold tracking-[0.15em] uppercase text-[#0C0F1D] bg-[#C5A059] rounded-sm transition-all duration-300 hover:scale-105 hover:neon-glow active:scale-95"
             >
               Explore My Work
             </button>
             <button
               onClick={() => navigateTo('contact')}
-              className="w-full sm:w-auto px-8 py-3.5 text-lg font-semibold text-gray-200 border-2 border-gray-700 rounded-xl transition-all duration-300 hover:scale-105 hover:border-[#88FF55] hover:text-white active:scale-95"
+              className="w-full sm:w-auto px-10 py-4 text-sm font-bold tracking-[0.15em] uppercase text-[#C5A059] border-2 border-[#C5A059]/40 rounded-sm transition-all duration-300 hover:scale-105 hover:border-[#C5A059] hover:text-[#C5A059] active:scale-95"
             >
               Get In Touch
             </button>
@@ -102,7 +94,6 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
         </motion.div>
       </div>
 
-      {/* Subtle Scroll Indicator */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -114,7 +105,7 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="w-6 h-10 border-2 border-gray-700 rounded-full flex justify-center p-1"
         >
-          <div className="w-1.5 h-1.5 bg-[#88FF55] rounded-full" />
+          <div className="w-1.5 h-1.5 bg-[#C5A059] rounded-full" />
         </motion.div>
       </motion.div>
     </section>
