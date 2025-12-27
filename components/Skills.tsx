@@ -249,13 +249,13 @@ const Skills: React.FC<SkillsProps> = ({ navigateTo }) => {
                     <div className="text-center mb-12">
                         <motion.h2 
                             whileHover={{ scale: 1.02 }}
-                            className="text-3xl md:text-4xl font-bold tracking-tight text-[#E6EAF2] cursor-default inline-block"
+                            className="text-3xl md:text-4xl font-bold tracking-[0.2em] text-[#E6EAF2] cursor-default inline-block uppercase"
                         >
-                            Core Competencies
+                            CORE COMPETENCIES
                         </motion.h2>
                         <p className="mt-4 max-w-3xl mx-auto text-[#A8B0C2] transition-colors duration-300 hover:text-white cursor-default">Leveraging data-driven insights and product management frameworks to drive business growth and user engagement.</p>
                     </div>
-                    <div className="max-w-3xl mx-auto p-6 md:p-8 bg-[#111623] rounded-[14px] border border-[rgba(197,160,89,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] flex justify-center transition-all duration-300 hover:border-[#C5A059]/30">
+                    <div className="max-w-3xl mx-auto p-6 md:p-8 bg-[#111623] rounded-[14px] border border border-[rgba(197,160,89,0.14)] shadow-[0_10px_30px_rgba(0,0,0,0.35)] flex justify-center transition-all duration-300 hover:border-[#C5A059]/30">
                         <div className="w-full max-w-lg aspect-square">
                             <RadarChart />
                         </div>
