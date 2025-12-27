@@ -12,6 +12,7 @@ import Skills from './components/Skills';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Projects from './components/Projects';
+import CaseStudy from './components/CaseStudy';
 import PerplexityCaseStudy from './components/PerplexityCaseStudy';
 import AINoteTakerCaseStudy from './components/AINoteTakerCaseStudy';
 import ReachifyMeCaseStudy from './components/ReachifyMeCaseStudy';
@@ -135,6 +136,18 @@ const App: React.FC = () => {
                 transition={pageTransition}
               >
                 <Projects navigateTo={navigateTo} />
+              </motion.div>
+            )}
+            {currentPage === 'case-study' && (
+              <motion.div
+                key="case-study"
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <CaseStudy navigateTo={navigateTo} />
               </motion.div>
             )}
             {currentPage === 'perplexity-case-study' && (

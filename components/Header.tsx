@@ -5,6 +5,7 @@ const NAV_LINKS = [
   { name: 'Home', href: '#home', page: 'home' },
   { name: 'About', href: 'about', page: 'about' },
   { name: 'Projects', href: 'projects', page: 'projects' },
+  { name: 'Case Study', href: 'case-study', page: 'case-study' },
   { name: 'Skills', href: 'skills', page: 'skills' },
   { name: 'Experience', href: 'experience', page: 'experience' },
   { name: 'Education', href: 'education', page: 'education' },
@@ -93,8 +94,9 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo, theme, toggleT
           </div>
           <nav className="hidden lg:flex lg:items-center lg:space-x-8">
             {NAV_LINKS.map((link) => {
-              const isProjectPage = currentPage.includes('case-study') && link.page === 'projects';
-              const isActive = (link.page === currentPage) || isProjectPage;
+              const isProjectPage = currentPage.includes('case-study') && (link.page === 'projects' || link.page === 'case-study');
+              const isActive = (link.page === currentPage) || (link.page === 'case-study' && currentPage.includes('case-study'));
+              
               return (
                 <a
                   key={link.name}
