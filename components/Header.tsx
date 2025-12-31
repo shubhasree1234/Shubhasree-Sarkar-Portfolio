@@ -87,9 +87,8 @@ const Header: React.FC<HeaderProps> = ({ currentPage, navigateTo, theme, toggleT
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <a onClick={() => handleNavClick('home', '#home')} className="text-2xl font-bold tracking-wider neon-text text-glow cursor-pointer transition-colors duration-500">
-              SHUBHASREE
-              <span className="text-theme-primary"> SARKAR</span>
+            <a onClick={() => handleNavClick('home', '#home')} className="text-2xl font-bold tracking-wider neon-text text-glow cursor-pointer transition-colors duration-500 min-w-[50px] inline-block">
+              {/* Name removed as requested */}
             </a>
           </div>
           <nav className="hidden lg:flex lg:items-center lg:space-x-8">

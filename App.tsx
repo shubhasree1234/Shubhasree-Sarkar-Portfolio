@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, Transition } from 'framer-motion';
+import { motion, AnimatePresence, Transition, useMotionValue, useTransform } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Metrics from './components/Metrics';
@@ -20,6 +20,40 @@ import NaukriCaseStudy from './components/NaukriCaseStudy';
 import LangysCaseStudy from './components/LangysCaseStudy';
 import YouTubeCaseStudy from './components/YouTubeCaseStudy';
 import ScrollToTop from './components/ScrollToTop';
+import ReadingProgressBar from './components/ReadingProgressBar';
+
+const BackgroundParallax: React.FC<{ theme: string }> = ({ theme }) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      // Map to -40 to 40 px range
+      mouseX.set((clientX / innerWidth - 0.5) * 80);
+      mouseY.set((clientY / innerHeight - 0.5) * 80);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  // Subtle opposite movement for parallax depth
+  const backgroundX = useTransform(mouseX, (v) => -v);
+  const backgroundY = useTransform(mouseY, (v) => -v);
+
+  if (theme === 'light') return null;
+
+  return (
+    <motion.div 
+      style={{ x: backgroundX, y: backgroundY }}
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
+    >
+      <div className="absolute top-[10%] right-[15%] w-[800px] h-[800px] bg-[#C5A059]/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-[15%] left-[10%] w-[600px] h-[600px] bg-[#C5A059]/3 rounded-full blur-[100px]" />
+    </motion.div>
+  );
+};
 
 const CursorGlow: React.FC<{ theme: string }> = ({ theme }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -79,22 +113,46 @@ const App: React.FC = () => {
     window.scrollTo(0, 0);
   };
   
+  // horizontal wipe variants
   const pageVariants = {
-      initial: { opacity: 0, filter: 'blur(4px)' },
-      in: { opacity: 1, filter: 'blur(0px)' },
-      out: { opacity: 0, filter: 'blur(4px)' }
+      initial: { 
+        clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)',
+        opacity: 0,
+        filter: 'blur(10px)'
+      },
+      in: { 
+        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
+        opacity: 1,
+        filter: 'blur(0px)'
+      },
+      out: { 
+        clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)',
+        opacity: 0,
+        filter: 'blur(10px)'
+      }
   };
 
   const pageTransition: Transition = {
       type: 'tween',
-      ease: 'anticipate',
-      duration: 0.5
+      ease: [0.22, 1, 0.36, 1], // Smooth premium ease
+      duration: 0.8
   };
 
+  const isDetailedCaseStudy = [
+    'perplexity-case-study',
+    'ai-note-taking-app',
+    'reachifyme-gtm-strategy',
+    'product-growth-naukri',
+    'product-analytics-langys-dashboard',
+    'product-improvement-of-youtube'
+  ].includes(currentPage);
+
   return (
-    <div className={`bg-theme-primary text-theme-primary antialiased overflow-x-hidden transition-colors duration-500`}>
+    <div className={`bg-theme-primary text-theme-primary antialiased overflow-x-hidden transition-colors duration-500 min-h-screen`}>
       <div className="noise-overlay" aria-hidden="true" />
+      <BackgroundParallax theme={theme} />
       <CursorGlow theme={theme} />
+      {isDetailedCaseStudy && <ReadingProgressBar />}
       <div className="relative z-10">
         <Header currentPage={currentPage} navigateTo={navigateTo} theme={theme} toggleTheme={toggleTheme} />
         <main>

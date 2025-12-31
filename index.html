@@ -50,6 +50,20 @@
       scroll-behavior: smooth;
       transition: background-color 0.5s ease, color 0.5s ease;
     }
+    /* Custom Themed Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e0b462;
+    }
     .neon-text {
       color: var(--gold);
     }
