@@ -2,7 +2,8 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 type Category = 'Academic' | 'Hackathon';
-type Filter = 'All' | Category;
+type Domain = 'Product Management' | 'Data Science';
+type Filter = 'All' | Domain;
 
 interface Project {
     id: number;
@@ -12,16 +13,77 @@ interface Project {
     tags: string[];
     tools: string[];
     category: Category;
+    domains: Domain[];
     caseStudyPage?: string; 
 }
 
 const projectsData: Project[] = [
-    { id: 1, title: "Product Thinking Case Study – Perplexity.ai", duration: "3 weeks", description: "Comprehensive product analysis and strategic recommendations for Perplexity.ai, focusing on market positioning and user experience optimization.", tags: ["Market Research", "Personas", "Product Thinking", "+1"], tools: ["Pitch", "Figma"], category: "Academic", caseStudyPage: "projects/perplexity-case-study" },
-    { id: 2, title: "User Research & Product Discovery – AI Note-taking App", duration: "3 weeks", description: "In-depth user research analyzing AI adoption barriers and user behavior patterns in productivity tools.", tags: ["User Research", "Behavioral Analysis"], tools: ["Pitch", "Google Forms"], category: "Academic", caseStudyPage: "projects/ai-note-taking-app" },
-    { id: 3, title: "Product Growth Strategy – Naukri.com", duration: "2 weeks", description: "AARRR framework implementation for revenue optimization and user engagement improvement.", tags: ["Growth Strategy", "AARRR Framework"], tools: ["Pitch", "Google Forms", "Figma"], category: "Academic", caseStudyPage: "projects/product-growth-naukri" },
-    { id: 4, title: "Product Analytics – Langys Intelligent Dashboard", duration: "3 weeks", description: "Market entry analysis using Zomato data with real-time dashboard for data-driven decision making.", tags: ["Product Analytics", "Market Analysis"], tools: ["Pitch", "MixPanel"], category: "Academic", caseStudyPage: "projects/product-analytics-langys-dashboard" },
-    { id: 5, title: "Product Improvement of YouTube", duration: "3 Weeks", description: "Session duration optimization through personalization and user experience enhancements.", tags: ["Product Improvement", "Personalization", "GTM Strategy", "User Segmentation", "+1"], tools: ["Figma", "Notion", "Pitch", "Google Forms"], category: "Academic", caseStudyPage: "projects/product-improvement-of-youtube" },
-    { id: 6, title: "GTM Strategy – ReachifyMe User Acquisition", duration: "3 weeks", description: "Winning GTM strategy for B2B SaaS US market expansion with cost-efficient acquisition plan.", tags: ["GTM Strategy", "Market Analysis", "Hackathon Winner", "+1"], tools: ["Figma", "Notion", "Canva"], category: "Hackathon", caseStudyPage: "projects/reachifyme-gtm-strategy" }
+    { 
+        id: 1, 
+        title: "Product Thinking Case Study – Perplexity.ai", 
+        duration: "3 weeks", 
+        description: "Comprehensive product analysis and strategic recommendations for Perplexity.ai, focusing on market positioning and user experience optimization.", 
+        tags: ["Market Research", "Personas", "Product Thinking", "+1"], 
+        tools: ["Pitch", "Figma"], 
+        category: "Academic", 
+        domains: ["Product Management"],
+        caseStudyPage: "projects/perplexity-case-study" 
+    },
+    { 
+        id: 2, 
+        title: "User Research & Product Discovery – AI Note-taking App", 
+        duration: "3 weeks", 
+        description: "In-depth user research analyzing AI adoption barriers and user behavior patterns in productivity tools.", 
+        tags: ["User Research", "Behavioral Analysis"], 
+        tools: ["Pitch", "Google Forms"], 
+        category: "Academic", 
+        domains: ["Product Management"],
+        caseStudyPage: "projects/ai-note-taking-app" 
+    },
+    { 
+        id: 3, 
+        title: "Product Growth Strategy – Naukri.com", 
+        duration: "2 weeks", 
+        description: "AARRR framework implementation for revenue optimization and user engagement improvement.", 
+        tags: ["Growth Strategy", "AARRR Framework"], 
+        tools: ["Pitch", "Google Forms", "Figma"], 
+        category: "Academic", 
+        domains: ["Product Management"],
+        caseStudyPage: "projects/product-growth-naukri" 
+    },
+    { 
+        id: 4, 
+        title: "Product Analytics – Langys Intelligent Dashboard", 
+        duration: "3 weeks", 
+        description: "Market entry analysis using Zomato data with real-time dashboard for data-driven decision making.", 
+        tags: ["Product Analytics", "Market Analysis"], 
+        tools: ["Pitch", "MixPanel"], 
+        category: "Academic", 
+        domains: ["Product Management"],
+        caseStudyPage: "projects/product-analytics-langys-dashboard" 
+    },
+    { 
+        id: 5, 
+        title: "Product Improvement of YouTube", 
+        duration: "3 Weeks", 
+        description: "Session duration optimization through personalization and user experience enhancements.", 
+        tags: ["Product Improvement", "Personalization", "GTM Strategy", "User Segmentation", "+1"], 
+        tools: ["Figma", "Notion", "Pitch", "Google Forms"], 
+        category: "Academic", 
+        domains: ["Product Management"],
+        caseStudyPage: "projects/product-improvement-of-youtube" 
+    },
+    { 
+        id: 6, 
+        title: "GTM Strategy – ReachifyMe User Acquisition", 
+        duration: "3 weeks", 
+        description: "Winning GTM strategy for B2B SaaS US market expansion with cost-efficient acquisition plan.", 
+        tags: ["GTM Strategy", "Market Analysis", "Hackathon Winner", "+1"], 
+        tools: ["Figma", "Notion", "Canva"], 
+        category: "Hackathon", 
+        domains: ["Product Management"],
+        caseStudyPage: "projects/reachifyme-gtm-strategy" 
+    }
 ];
 
 interface ProjectsProps {
@@ -83,7 +145,7 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
 
     const filteredProjects = useMemo(() => {
         return projectsData.filter(project => {
-            const matchesCategory = activeFilter === 'All' || project.category === activeFilter;
+            const matchesCategory = activeFilter === 'All' || project.domains.includes(activeFilter as Domain);
             const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                                  project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
                                  project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -172,7 +234,7 @@ const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        {(['All', 'Academic', 'Hackathon'] as Filter[]).map(filter => (
+                        {(['All', 'Product Management', 'Data Science'] as Filter[]).map(filter => (
                             <button
                                 key={filter}
                                 onClick={() => setActiveFilter(filter)}
